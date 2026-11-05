@@ -77,16 +77,16 @@ window.PAGE_I18N = {
   en: {
     'page.title':'Home · Page Not Found — Qi JunHao',
     'nf.title':'This page is not in the archive',
-    'nf.desc':'The page you asked for may have been moved, renamed, or never existed. Use the links below to get back.',
+    'nf.desc':'This page moved, changed its name, or never existed. Try one of these instead.',
     'nf.home':'Back to Home',
     'nf.contact':'Contact me',
   },
   hant: {
     'page.title':'首頁 · 頁面不存在 — 戚俊皓',
-    'nf.title':'這一頁不在檔案裡',
-    'nf.desc':'你要找的頁面可能已經被移動、改名，或者從來沒存在過。可以從下面的入口回到站點。',
-    'nf.home':'返回首頁',
-    'nf.contact':'聯繫我',
+    'nf.title':'呢一頁唔喺檔案入面',
+    'nf.desc':'你搵嘅頁面可能搬咗、改咗名，或者從來都冇存在過。由下面揀個入口返去啦。',
+    'nf.home':'返去首頁',
+    'nf.contact':'聯絡我',
   }
 };
 </script>
@@ -98,13 +98,13 @@ document.addEventListener('DOMContentLoaded', function () {
   if (gooeyContainer && typeof window.GooeyNav === 'function') {
     window.GooeyNav(gooeyContainer, {
       items: [
-        { label: '首页', href: 'https://qijunhao.com' },
-        { label: '音乐', href: 'https://music.qijunhao.com' },
-        { label: '旅行', href: 'https://travel.qijunhao.com' },
-        { label: '摄影', href: 'https://photography.qijunhao.com' },
-        { label: '运动', href: 'https://sport.qijunhao.com' },
-        { label: '履历', href: 'https://resume.qijunhao.com' },
-        { label: '联系', href: 'https://contact.qijunhao.com' },
+        { label: '首页', href: '/' },
+        { label: '音乐', href: '/music' },
+        { label: '旅行', href: '/travel' },
+        { label: '摄影', href: '/photography' },
+        { label: '运动', href: '/sports' },
+        { label: '履历', href: '/resume' },
+        { label: '联系', href: '/contact' },
       ],
       animationTime: 600,
       particleCount: 12,

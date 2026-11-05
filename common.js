@@ -83,14 +83,14 @@
     var NAV_LABELS = {
       zh: ['首页', '音乐', '旅行', '摄影', '运动', '简历', '联系'],
       en: ['Home', 'Music', 'Travel', 'Photography', 'Sport', 'Resume', 'Contact'],
-      hant: ['首頁', '音樂', '旅行', '攝影', '運動', '履歷', '聯繫']
+      hant: ['首頁', '音樂', '旅行', '攝影', '運動', '履歷', '聯絡']
     };
-    var NAV_SUB = { zh: '构建中', en: 'Building', hant: '構建中' };
+    var NAV_SUB = { zh: '构建中', en: 'Building', hant: '建置中' };
     // 占位页（旅行 / 摄影 / 运动）共用文案，页面可被 PAGE_I18N 覆盖
     var SHARED_I18N = {
       zh: { 'coming.status': '还没做好', 'coming.desc': '这个页面还在施工中<br>内容会放在这里', 'coming.back': '回到首页' },
-      en: { 'coming.status': 'Coming Soon', 'coming.desc': 'This page is under construction<br>Content will be here soon', 'coming.back': 'Back to Home' },
-      hant: { 'coming.status': '還沒做好', 'coming.desc': '這個頁面還在施工中<br>內容會放在這裡', 'coming.back': '回到首頁' }
+      en: { 'coming.status': 'Not quite ready', 'coming.desc': 'Still putting this one together<br>Content lands here soon', 'coming.back': 'Back to Home' },
+      hant: { 'coming.status': '仲未整好', 'coming.desc': '呢頁仲喺度整緊<br>內容遲啲先至有', 'coming.back': '返去首頁' }
     };
 
     function renderPageI18N(lang) {

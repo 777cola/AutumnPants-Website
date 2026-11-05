@@ -16,8 +16,8 @@ const I18N = {
   en: {
     'nav.home':'Music Home','nav.listen':'Listen','nav.concert':'Live','nav.perform':'Stage','nav.create':'Create',
     'hero.badge':'AUTUMN PANTS',
-    'hero.sub':'Under the spotlight, before the mic — every performance brings me closer to myself',
-    'gallery.title':'Performance Archive','gallery.desc':'Click a card to explore',
+    'hero.sub':'Spotlight on, mic up — every show gets me a little closer to myself',
+    'gallery.title':'Stage Archive','gallery.desc':'Click a card to explore',
     'footer.text':'Next show, on its way','footer.meta':'AUTUMN PANTS · 2026',
     'section.setlist':'Setlist','section.photos':'Photos',
     'credit':'Stage Moments · AutumnPants',
@@ -25,9 +25,9 @@ const I18N = {
   hant: {
     'nav.home':'音樂首頁','nav.listen':'聽','nav.concert':'賞','nav.perform':'演','nav.create':'創',
     'hero.badge':'AUTUMN PANTS',
-    'hero.sub':'聚光燈下，話筒前——每一場演出都在靠近自己',
-    'gallery.title':'演出檔案','gallery.desc':'點擊卡片查看詳情',
-    'footer.text':'下一場演出，正在路上','footer.meta':'AUTUMN PANTS · 2026',
+    'hero.sub':'聚光燈下，咪前——每一場都靠近自己多一啲',
+    'gallery.title':'演出檔案','gallery.desc':'撳入卡片睇詳情',
+    'footer.text':'下一場，嚟緊','footer.meta':'AUTUMN PANTS · 2026',
     'section.setlist':'曲目','section.photos':'影像',
     'credit':'舞台時光 · AutumnPants',
   }
