@@ -40,7 +40,8 @@ body {
 [data-theme=dark] .topnav {
   background: linear-gradient(180deg, rgba(15,23,42,.95), transparent);
 }
-.topnav .nav-center { display: flex; align-items: center; gap: 24px; }
+.topnav .nav-center { display: flex; align-items: center; gap: 24px; width: 430px; justify-content: space-between; }
+.topnav .nav-center .links { width: 300px; justify-content: space-evenly; }
 .topnav .nav-wrap {
   position: relative; display: flex; align-items: center;
   justify-content: center; width: 100%; max-width: 1200px;

@@ -16,3 +16,6 @@
 .topnav .lang-toggle .lang-item[data-lang="hant"].active::after{width:53.4px}
 .topnav .lang-toggle .lang-item[data-lang="en"].active::after{width:47.2px}
 .topnav .lang-toggle .lang-item:hover:not(.active){color:var(--text-secondary)}
+/* ── 顶部导航定宽：切换语言时长度不变 ── */
+.topnav .nav-center{width:430px;justify-content:space-between;gap:0}
+.topnav .nav-center .links{width:300px;justify-content:space-evenly}
