@@ -71,6 +71,8 @@
       document.querySelectorAll('.lang-item').forEach(function(el) {
         el.classList.toggle('active', el.dataset.lang === lang);
       });
+      // 同步 <html lang>，读屏和搜索引擎靠它判断语言
+      document.documentElement.lang = lang === 'en' ? 'en' : (lang === 'hant' ? 'zh-Hant' : 'zh-CN');
       // Dispatch custom event for other scripts
       document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: lang } }));
     }
