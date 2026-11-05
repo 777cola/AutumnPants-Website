@@ -200,9 +200,9 @@ function App() {
           </div>
           <div className="nav-right">
             <div className="lang-toggle" id="langToggle">
-              <span className="lang-item active" data-lang="zh">简</span>
-              <span className="lang-item" data-lang="en">EN</span>
-              <span className="lang-item" data-lang="hant">繁</span>
+              <span className="lang-item active" data-lang="zh" data-full="简体中文">简</span>
+              <span className="lang-item" data-lang="hant" data-full="繁體中文">繁</span>
+              <span className="lang-item" data-lang="en" data-full="English">EN</span>
             </div>
             <button className="theme-toggle" id="themeToggle" aria-label="切换主题">
               <svg viewBox="0 0 24 24" id="themeIconSun"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>

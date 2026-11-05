@@ -75,20 +75,29 @@ body {
   margin-left: auto; position: absolute; right: 28px; top: 50%; transform: translateY(-50%);
 }
 .lang-toggle {
-  position: relative; display: flex; align-items: center; height: 30px;
-  background: var(--accent-subtle); border-radius: 20px; padding: 2px; gap: 0;
-  border: 1px solid var(--accent-border); overflow: hidden;
-  transition: all var(--transition);
+  position: relative; display: inline-flex; align-items: center; height: 36px;
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: 14px; padding: 3px; gap: 2px;
+  transition: border-color var(--transition);
 }
-.lang-toggle:hover { border-color: var(--accent); }
+.lang-toggle:hover { border-color: var(--accent-border); }
 .lang-item {
-  padding: 3px 8px; font-size: .72rem; font-weight: 600;
-  display: flex; align-items: center; cursor: pointer;
-  color: var(--text-muted); transition: all .2s;
-  white-space: nowrap; border-radius: 16px; user-select: none;
+  display: inline-flex; align-items: center; height: 28px; padding: 0 9px;
+  font-size: .8rem; font-weight: 400; letter-spacing: .04em; border-radius: 10px;
+  cursor: pointer; color: var(--text-muted); white-space: nowrap; user-select: none;
   font-family: var(--font-body);
+  transition: color .35s, background .35s;
 }
-.lang-item.active { background: var(--accent); color: #fff; }
+.lang-item::after {
+  content: attr(data-full); display: inline-block; max-width: 0; opacity: 0;
+  overflow: hidden; white-space: nowrap; padding-left: 0;
+  transition: max-width .45s cubic-bezier(.22,1,.36,1), opacity .25s .12s, padding-left .45s cubic-bezier(.22,1,.36,1);
+}
+.lang-item.active {
+  background: var(--accent-subtle); color: var(--text); padding: 0 11px;
+}
+.lang-item.active::after { max-width: 8em; opacity: 1; padding-left: 5px; }
+.lang-item:hover:not(.active) { color: var(--text-secondary); background: var(--accent-subtle); }
 .theme-toggle {
   background: none; border: none; cursor: pointer;
   width: 36px; height: 36px; border-radius: 8px;

@@ -568,46 +568,85 @@ img { max-width: 100%; height: auto; display: block; }
    LANGUAGE TOGGLE
    ============================================================ */
 .lang-toggle {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  height: 30px;
-  background: var(--accent-subtle);
-  border-radius: 20px;
-  padding: 2px;
-  gap: 0;
+  height: 38px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 3px;
+  gap: 2px;
   position: relative;
+  box-shadow: var(--shadow-sm);
 }
 
 .lang-item {
-  padding: 3px 10px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 9px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  border-radius: 10px;
   font-family: var(--font-body, var(--font-cn));
   cursor: pointer;
-  color: var(--text-secondary);
+  color: var(--text-muted);
   white-space: nowrap;
   position: relative;
   z-index: 1;
   user-select: none;
+  transition: color 0.35s, background 0.35s;
+}
+
+/* 当前语言展开全称：简 → 简 简体中文 */
+.lang-item::after {
+  content: attr(data-full);
+  display: inline-block;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 0;
+  transition: max-width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.25s 0.12s,
+              padding-left 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .lang-item.active {
-  background: var(--accent);
-  color: #fff;
+  color: var(--text);
+  background: var(--accent-glow);
+  padding: 0 11px;
+}
+
+.lang-item.active::after {
+  max-width: 8em;
+  opacity: 1;
+  padding-left: 5px;
 }
 
 .lang-item:hover:not(.active) {
-  color: var(--accent);
+  color: var(--text-secondary);
+  background: var(--surface-hover);
 }
 
 @media (max-width: 768px) {
   .lang-toggle {
-    height: 28px;
+    height: 34px;
+    border-radius: 10px;
+    padding: 2px;
   }
   .lang-item {
-    padding: 2px 6px;
-    font-size: 0.68rem;
+    height: 28px;
+    padding: 0 6px;
+    font-size: 0.7rem;
+    border-radius: 8px;
+  }
+  .lang-item.active {
+    padding: 0 8px;
+  }
+  .lang-item.active::after {
+    padding-left: 4px;
   }
 }
 
