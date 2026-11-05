@@ -2,23 +2,17 @@ CLAUDE.md
 .DS_Store
 node_modules/
 
-# Subdomain pages — now in separate repos
-music/
-travel/
-photography/
-sports/
-resume/
-about/
-contact/
+# 本地素材/源工程（不进仓库）
+music/乐队（个人）演出/
+music/演-板块/node_modules/
+运动页设计/
+首页照片/
 
-# Git worktrees (local only)
+# Git worktrees & 旧的板块仓库本地克隆（本地 only）
 .worktrees/
-
-# Cloned subdomain repos (local copies)
 AutumnPants_Website_*/
 
 # Dev artifacts
 components.json
 package.json
 pnpm-lock.yaml
-首页照片/

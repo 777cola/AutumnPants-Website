@@ -15,17 +15,19 @@
     var particleR = opts.particleR || 100;
     var timeVariance = opts.timeVariance || 300;
     var colors = opts.colors || [1, 2, 3, 1, 2, 3, 1, 4];
+    // 尚未完工的板块：导航置灰 + 小字「正在建设中」，不响应点击
+    var BUILDING_HREF = /^\/(travel|photography|sports)(\/|$)/i;
     var initialActiveIndex = opts.initialActiveIndex;
     if (initialActiveIndex === undefined || initialActiveIndex < 0) {
-      // Auto-detect active item from current page (hostname online, pathname locally)
-      var _host = location.hostname;
-      var _seg = (location.pathname.split('/')[1] || '').replace(/^sports$/, 'sport');
+      // 按路径前缀判断当前板块（/music/ 、/travel/ …）
+      var _path = location.pathname.replace(/\/index\.html$/, '/');
       items.forEach(function (item, i) {
         if (initialActiveIndex !== undefined) return;
         var href = item.href || '';
-        if ((_host !== '127.0.0.1' && _host !== 'localhost') && href.indexOf(_host) !== -1) {
-          initialActiveIndex = i;
-        } else if (_seg && href.indexOf('//' + _seg + '.qijunhao.com') !== -1) {
+        if (href.charAt(0) !== '/') return;
+        if (href === '/') {
+          if (_path === '/') initialActiveIndex = i;
+        } else if (_path === href || _path.indexOf(href + '/') === 0) {
           initialActiveIndex = i;
         }
       });
@@ -146,14 +148,27 @@
     items.forEach(function (item, idx) {
       var li = document.createElement('li');
       li.className = idx === initialActiveIndex ? 'active' : '';
+      var building = BUILDING_HREF.test(item.href || '');
       var a = document.createElement('a');
       a.href = item.href || '#';
       a.textContent = item.label;
+      if (building) {
+        li.className += ' nav-building';
+        a.setAttribute('aria-disabled', 'true');
+        a.setAttribute('tabindex', '-1');
+      }
       a.addEventListener('click', function (e) {
+        if (building) { e.preventDefault(); return; }
         // Update active state on click, but still navigate
         handleClick(li, idx);
       });
       li.appendChild(a);
+      if (building) {
+        var sub = document.createElement('span');
+        sub.className = 'nav-sub';
+        sub.textContent = '正在建设中';
+        li.appendChild(sub);
+      }
       ul.appendChild(li);
     });
 

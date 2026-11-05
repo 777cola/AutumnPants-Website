@@ -83,25 +83,40 @@
       en: ['Home', 'Music', 'Travel', 'Photography', 'Sport', 'Resume', 'Contact'],
       hant: ['首頁', '音樂', '旅行', '攝影', '運動', '履歷', '聯繫']
     };
+    var NAV_SUB = { zh: '正在建设中', en: 'Under construction', hant: '正在建設中' };
+    // 占位页（旅行 / 摄影 / 运动）共用文案，页面可被 PAGE_I18N 覆盖
+    var SHARED_I18N = {
+      zh: { 'coming.status': '还没做好', 'coming.desc': '这个页面还在施工中<br>内容会放在这里', 'coming.back': '回到首页' },
+      en: { 'coming.status': 'Coming Soon', 'coming.desc': 'This page is under construction<br>Content will be here soon', 'coming.back': 'Back to Home' },
+      hant: { 'coming.status': '還沒做好', 'coming.desc': '這個頁面還在施工中<br>內容會放在這裡', 'coming.back': '回到首頁' }
+    };
 
     function renderPageI18N(lang) {
+      var table = {};
+      var base = SHARED_I18N[lang] || SHARED_I18N.zh;
+      for (var k in base) if (base.hasOwnProperty(k)) table[k] = base[k];
       var dict = window.PAGE_I18N;
       if (dict) {
-        var table = dict[lang] || dict['zh'] || {};
-        document.querySelectorAll('[data-i18n]').forEach(function (el) {
-          var key = el.getAttribute('data-i18n');
-          if (table[key]) el.innerHTML = table[key];
-        });
-        var titleKey = document.documentElement.getAttribute('data-i18n-title');
-        if (titleKey && table[titleKey]) document.title = table[titleKey];
-        document.querySelectorAll('[data-i18n-meta]').forEach(function (m) {
-          var key = m.getAttribute('data-i18n-meta');
-          if (table[key]) m.setAttribute('content', table[key]);
-        });
+        var own = dict[lang] || dict['zh'] || {};
+        for (var k2 in own) if (own.hasOwnProperty(k2)) table[k2] = own[k2];
       }
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        if (table[key]) el.innerHTML = table[key];
+      });
+      var titleKey = document.documentElement.getAttribute('data-i18n-title');
+      if (titleKey && table[titleKey]) document.title = table[titleKey];
+      document.querySelectorAll('[data-i18n-meta]').forEach(function (m) {
+        var key = m.getAttribute('data-i18n-meta');
+        if (table[key]) m.setAttribute('content', table[key]);
+      });
       var labels = NAV_LABELS[lang] || NAV_LABELS.zh;
       document.querySelectorAll('.gooey-nav-container nav ul li a').forEach(function (a, i) {
         if (labels[i]) a.textContent = labels[i];
+      });
+      var subText = NAV_SUB[lang] || NAV_SUB.zh;
+      document.querySelectorAll('.gooey-nav-container .nav-sub').forEach(function (el) {
+        el.textContent = subText;
       });
     }
 

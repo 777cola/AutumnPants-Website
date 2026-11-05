@@ -1,0 +1,1847 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-title="title">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简历 — 戚俊皓</title>
+<link rel="canonical" href="https://qijunhao.com/resume/">
+  <meta name="description" content="戚俊皓的实习经历、比赛获奖与项目实践" data-i18n-meta="meta.desc">
+  <meta property="og:title" content="简历 | 戚俊皓" data-i18n-meta="meta.ogtitle">
+  <meta property="og:description" content="从课堂到投行，从量化到行业研究——不断拓展金融视野" data-i18n-meta="meta.ogdesc">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♌</text></svg>">
+
+  <link rel="stylesheet" href="/fonts/fonts.css">
+
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    /* ─── Tiles Background ───────────────────── */
+    .tiles-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .tiles-bg .tile-grid {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(50, 1fr);
+    }
+    .tiles-bg .tile-grid .tile {
+      border: 0.5px solid rgba(26,75,140,0.04);
+      transition: background 0.3s ease, border-color 0.3s ease;
+      pointer-events: auto;
+    }
+    .tiles-bg .tile-grid .tile:hover {
+      background: rgba(26,75,140,0.06);
+      border-color: rgba(26,75,140,0.12);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .tiles-bg .tile-grid .tile { transition: none; }
+    }
+    /* ─── Flowing Paths Canvas ──────────────── */
+    #bgPathsCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.25;
+    }
+
+    /* ─── Stats Row ──────────────────────────── */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem 3rem;
+      margin-top: 2rem;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── Timeline (from style.css, extended) ─── */
+    .timeline {
+      position: relative;
+      padding-left: 2.5rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-left: 1.75rem;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.85rem;
+      top: 0.45rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+      transition: transform 0.3s ease;
+    }
+    .timeline-item:hover::before { transform: scale(1.4); }
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    .timeline-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .timeline-sub {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .timeline-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .timeline-desc ul { list-style: none; padding: 0; }
+    .timeline-desc li {
+      position: relative;
+      padding-left: 1rem;
+      margin-bottom: 0.3rem;
+    }
+    .timeline-desc li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    /* ─── Education Cards ────────────────────── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .edu-grid { grid-template-columns: 1fr; }
+    }
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: all var(--transition);
+    }
+    .edu-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-border);
+    }
+    .edu-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .edu-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .edu-card-title small {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+    .edu-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-shrink: 0;
+    }
+    .edu-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-subtle);
+      border: 1px solid var(--accent-border);
+    }
+    .edu-date {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .edu-courses {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ─── Competition Cards ──────────────────── */
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 900px) {
+      .comp-grid { grid-template-columns: 1fr; }
+    }
+    .comp-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.5rem 1.75rem;
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .comp-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-border);
+      transform: translateY(-3px);
+    }
+    /* Award-level accent stripe at top */
+    .comp-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 1.5rem; right: 1.5rem;
+      height: 3px;
+      border-radius: 0 0 3px 3px;
+      background: var(--border);
+      transition: background var(--transition);
+    }
+    .comp-card[data-tier="gold"]::before    { background: var(--gold); }
+    .comp-card[data-tier="silver"]::before  { background: #94a3b8; }
+    .comp-card[data-tier="bronze"]::before  { background: #cd7f32; }
+    .comp-card[data-tier="special"]::before { background: var(--accent-light); }
+
+    .comp-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .comp-card-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.4;
+      flex: 1;
+    }
+    .comp-card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .comp-card-badge.gold {
+      color: #a07320;
+      background: rgba(212,168,67,0.1);
+      border: 1px solid rgba(212,168,67,0.25);
+    }
+    .comp-card-badge.silver {
+      color: #64748b;
+      background: rgba(148,163,184,0.1);
+      border: 1px solid rgba(148,163,184,0.25);
+    }
+    .comp-card-badge.bronze {
+      color: #8b5e34;
+      background: rgba(205,127,50,0.1);
+      border: 1px solid rgba(205,127,50,0.25);
+    }
+    .comp-card-badge.special {
+      color: var(--accent);
+      background: var(--accent-subtle);
+      border: 1px solid var(--accent-border);
+    }
+    .comp-card-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.75rem;
+    }
+    .comp-card-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .comp-card-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-top: 0.15rem;
+    }
+    .comp-card-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+      opacity: 0.7;
+    }
+
+    [data-theme="dark"] .comp-card-badge.gold {
+      color: var(--gold-light);
+      background: rgba(212,168,67,0.12);
+      border-color: rgba(212,168,67,0.2);
+    }
+    [data-theme="dark"] .comp-card-badge.silver {
+      color: #94a3b8;
+      background: rgba(148,163,184,0.12);
+      border-color: rgba(148,163,184,0.2);
+    }
+    [data-theme="dark"] .comp-card-badge.bronze {
+      color: #d4a060;
+      background: rgba(205,127,50,0.12);
+      border-color: rgba(205,127,50,0.2);
+    }
+
+    /* ─── Research Project Cards ──────────────── */
+    .research-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .research-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.75rem 1.75rem 2.25rem;
+      transition: all var(--transition);
+      overflow: hidden;
+    }
+    /* Left accent bar — replaces the top stripe from comp-cards */
+    .research-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--accent);
+      opacity: 0.4;
+      transition: all var(--transition);
+    }
+    .research-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-border);
+      transform: translateY(-2px);
+    }
+    .research-card:hover::before {
+      opacity: 1;
+      width: 4px;
+      box-shadow: 0 0 12px rgba(26,75,140,0.25);
+    }
+    /* Variant: warmer accent for 东莞/期货 card */
+    .research-card[data-variant="warm"]::before {
+      background: linear-gradient(180deg, #D4A843, #E86C00);
+    }
+    .research-card[data-variant="warm"]:hover::before {
+      box-shadow: 0 0 12px rgba(232,108,0,0.25);
+    }
+    .research-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.35rem;
+    }
+    .research-card-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+    .research-card-date {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      white-space: nowrap;
+      padding: 0.15rem 0.65rem;
+      border-radius: 50px;
+      background: var(--accent-subtle);
+      border: 1px solid var(--accent-border);
+      flex-shrink: 0;
+    }
+    .research-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .research-card-sub {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .research-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+    .research-card-desc:last-child { margin-bottom: 0; }
+    .research-card-desc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .research-card-desc li {
+      position: relative;
+      padding-left: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    .research-card-desc li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+    .research-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .research-card-tag {
+      display: inline-flex;
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+    }
+    .research-card-tag.accent {
+      color: var(--accent);
+      background: var(--accent-subtle);
+      border-color: var(--accent-border);
+    }
+
+    /* ─── Campus Atlas — bento 分区网格 ────────── */
+    .campus-atlas {
+      --campus-radius: 14px;
+    }
+    .campus-zone {
+      border-radius: var(--campus-radius);
+      padding: 1.75rem 1.75rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.4s var(--ease-smooth);
+    }
+    .campus-zone::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: var(--campus-radius) var(--campus-radius) 0 0;
+    }
+    .campus-zone-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .campus-zone-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+    .campus-zone-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+    .campus-zone-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .campus-zone-count {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.1rem 0.5rem;
+      border-radius: 50px;
+      opacity: 0.7;
+      margin-left: auto;
+    }
+    .campus-clubs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    .campus-club {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.83rem;
+      font-weight: 500;
+      line-height: 1.3;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      cursor: default;
+      transition: all 0.3s var(--ease-smooth);
+    }
+    .campus-club:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 16px rgba(26,75,140,0.08);
+    }
+    .campus-club-role {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      letter-spacing: 0.02em;
+      opacity: 0.75;
+    }
+    .campus-club-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+    }
+
+    /* ── Zone colour themes ── */
+    .zone-music {
+      background: linear-gradient(135deg, #f5f3ff 0%, #faf9ff 100%);
+      border: 1px solid rgba(139,92,246,0.15);
+    }
+    .zone-music::before { background: linear-gradient(90deg, #8B5CF6, #A78BFA); }
+    .zone-music .campus-zone-icon { background: rgba(139,92,246,0.1); color: #7C3AED; }
+    .zone-music .campus-zone-count { background: rgba(139,92,246,0.1); color: #7C3AED; }
+    .zone-music .campus-club:hover {
+      border-color: rgba(139,92,246,0.25);
+      background: rgba(139,92,246,0.04);
+    }
+    [data-theme="dark"] .zone-music {
+      background: linear-gradient(135deg, rgba(139,92,246,0.06), rgba(139,92,246,0.02));
+      border-color: rgba(139,92,246,0.12);
+    }
+    [data-theme="dark"] .zone-music .campus-club:hover {
+      background: rgba(139,92,246,0.06);
+      border-color: rgba(139,92,246,0.2);
+    }
+
+    .zone-sports {
+      background: linear-gradient(135deg, #ecfdf5 0%, #f4fdf8 100%);
+      border: 1px solid rgba(16,185,129,0.15);
+    }
+    .zone-sports::before { background: linear-gradient(90deg, #10B981, #34D399); }
+    .zone-sports .campus-zone-icon { background: rgba(16,185,129,0.1); color: #059669; }
+    .zone-sports .campus-zone-count { background: rgba(16,185,129,0.1); color: #059669; }
+    .zone-sports .campus-club:hover {
+      border-color: rgba(16,185,129,0.25);
+      background: rgba(16,185,129,0.04);
+    }
+    .zone-sports .campus-club-role { background: rgba(16,185,129,0.08); color: #10B981; }
+    [data-theme="dark"] .zone-sports {
+      background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(16,185,129,0.02));
+      border-color: rgba(16,185,129,0.12);
+    }
+    [data-theme="dark"] .zone-sports .campus-club:hover {
+      background: rgba(16,185,129,0.06);
+      border-color: rgba(16,185,129,0.2);
+    }
+
+    .zone-academic {
+      background: linear-gradient(135deg, #f0f4ff 0%, #f8faff 100%);
+      border: 1px solid rgba(59,130,246,0.15);
+    }
+    .zone-academic::before { background: linear-gradient(90deg, #3B82F6, #60A5FA); }
+    .zone-academic .campus-zone-icon { background: rgba(59,130,246,0.1); color: #2563EB; }
+    .zone-academic .campus-zone-count { background: rgba(59,130,246,0.1); color: #2563EB; }
+    .zone-academic .campus-club:hover {
+      border-color: rgba(59,130,246,0.25);
+      background: rgba(59,130,246,0.04);
+    }
+    [data-theme="dark"] .zone-academic {
+      background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(59,130,246,0.02));
+      border-color: rgba(59,130,246,0.12);
+    }
+    [data-theme="dark"] .zone-academic .campus-club:hover {
+      background: rgba(59,130,246,0.06);
+      border-color: rgba(59,130,246,0.2);
+    }
+
+    .zone-language {
+      background: linear-gradient(135deg, #fffbeb 0%, #fffdf5 100%);
+      border: 1px solid rgba(245,158,11,0.18);
+    }
+    .zone-language::before { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
+    .zone-language .campus-zone-icon { background: rgba(245,158,11,0.1); color: #D97706; }
+    .zone-language .campus-zone-count { background: rgba(245,158,11,0.1); color: #D97706; }
+    .zone-language .campus-club:hover {
+      border-color: rgba(245,158,11,0.25);
+      background: rgba(245,158,11,0.04);
+    }
+    [data-theme="dark"] .zone-language {
+      background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(245,158,11,0.02));
+      border-color: rgba(245,158,11,0.12);
+    }
+    [data-theme="dark"] .zone-language .campus-club:hover {
+      background: rgba(245,158,11,0.06);
+      border-color: rgba(245,158,11,0.2);
+    }
+
+    .zone-interest {
+      background: linear-gradient(135deg, #fff7ed 0%, #fffaf5 100%);
+      border: 1px solid rgba(249,115,22,0.18);
+    }
+    .zone-interest::before { background: linear-gradient(90deg, #F97316, #FB923C); }
+    .zone-interest .campus-zone-icon { background: rgba(249,115,22,0.1); color: #EA580C; }
+    .zone-interest .campus-zone-count { background: rgba(249,115,22,0.1); color: #EA580C; }
+    .zone-interest .campus-club:hover {
+      border-color: rgba(249,115,22,0.25);
+      background: rgba(249,115,22,0.04);
+    }
+    [data-theme="dark"] .zone-interest {
+      background: linear-gradient(135deg, rgba(249,115,22,0.06), rgba(249,115,22,0.02));
+      border-color: rgba(249,115,22,0.12);
+    }
+    [data-theme="dark"] .zone-interest .campus-club:hover {
+      background: rgba(249,115,22,0.06);
+      border-color: rgba(249,115,22,0.2);
+    }
+
+    /* ── Service zone (teal) ── */
+    .zone-service {
+      background: linear-gradient(135deg, #f0fdfa 0%, #f4fdfa 100%);
+      border: 1px solid rgba(20,184,166,0.15);
+    }
+    .zone-service::before { background: linear-gradient(90deg, #14B8A6, #2DD4BF); }
+    .zone-service .campus-zone-icon { background: rgba(20,184,166,0.1); color: #0D9488; }
+    .zone-service .campus-zone-count { background: rgba(20,184,166,0.1); color: #0D9488; }
+    .zone-service .campus-club:hover {
+      border-color: rgba(20,184,166,0.25);
+      background: rgba(20,184,166,0.04);
+    }
+    [data-theme="dark"] .zone-service {
+      background: linear-gradient(135deg, rgba(20,184,166,0.06), rgba(20,184,166,0.02));
+      border-color: rgba(20,184,166,0.12);
+    }
+    [data-theme="dark"] .zone-service .campus-club:hover {
+      background: rgba(20,184,166,0.06);
+      border-color: rgba(20,184,166,0.2);
+    }
+
+    /* ── Campus Atlas grid layout ── */
+    .campus-atlas-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 1rem;
+    }
+    .campus-atlas-grid .zone-full {
+      grid-column: 1 / -1;
+    }
+    @media (max-width: 768px) {
+      .campus-atlas-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Honors 分区（独立于社团分区） ────────── */
+    .campus-honors {
+      border-radius: var(--campus-radius);
+      position: relative;
+      overflow: hidden;
+    }
+    .campus-honors-inner {
+      background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
+      border: 1px solid var(--accent-border);
+      border-radius: var(--campus-radius);
+      padding: 1.5rem 1.75rem 1.5rem;
+      position: relative;
+    }
+    .campus-honors-inner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #1A4B8C, #3A7BC8, #1A4B8C);
+      border-radius: var(--campus-radius) var(--campus-radius) 0 0;
+    }
+    [data-theme="dark"] .campus-honors-inner {
+      background: linear-gradient(135deg, rgba(26,75,140,0.08), rgba(26,75,140,0.03));
+      border-color: rgba(26,75,140,0.2);
+    }
+    .campus-honors-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+    .campus-honors-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: rgba(26,75,140,0.1);
+      color: var(--accent);
+    }
+    .campus-honors-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.01em;
+    }
+    .campus-honors-count {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.1rem 0.5rem;
+      border-radius: 50px;
+      background: rgba(26,75,140,0.1);
+      color: var(--accent);
+      margin-left: auto;
+    }
+    .campus-honors-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+    .campus-honor-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: var(--surface);
+      border: 1px solid var(--accent-border);
+      color: var(--accent);
+      transition: all 0.3s var(--ease-smooth);
+      cursor: default;
+    }
+    .campus-honor-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 16px rgba(26,75,140,0.1);
+      border-color: var(--accent);
+    }
+    .campus-honor-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.4;
+      flex-shrink: 0;
+    }
+    .campus-honor-tag {
+      display: inline-flex;
+      font-size: 0.65rem;
+      font-weight: 500;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      background: rgba(26,75,140,0.06);
+      border: 1px solid rgba(26,75,140,0.12);
+      color: var(--text-secondary);
+      margin-left: 0.15rem;
+    }
+    [data-theme="dark"] .campus-honor-item {
+      background: rgba(26,75,140,0.06);
+    }
+    [data-theme="dark"] .campus-honor-item:hover {
+      background: rgba(26,75,140,0.1);
+    }
+
+    /* ─── Merit Gallery — Certificates & Tools ── */
+    /* Gallery wall: certificates as framed art */
+    .gallery-wall {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      perspective: 1200px;
+    }
+    .cert-frame {
+      flex: 1;
+      min-width: 200px;
+      max-width: 280px;
+      position: relative;
+      transition: all 0.4s var(--ease-out);
+    }
+    .cert-frame:nth-child(1) { transform: rotateY(-2deg) rotateX(1deg); }
+    .cert-frame:nth-child(2) { transform: rotateY(0deg); }
+    .cert-frame:nth-child(3) { transform: rotateY(2deg) rotateX(-1deg); }
+    .cert-frame:hover {
+      transform: rotateY(0deg) rotateX(0deg) translateY(-8px) scale(1.03);
+      z-index: 5;
+    }
+    .cert-frame-inner {
+      position: relative;
+      background: var(--surface);
+      border: 2px solid var(--accent-border);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all 0.4s var(--ease-out);
+      box-shadow:
+        0 2px 8px rgba(26,75,140,0.04),
+        inset 0 0 0 1px rgba(255,255,255,0.5);
+      overflow: hidden;
+    }
+    .cert-frame-inner::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px solid var(--accent-border);
+      border-radius: calc(var(--radius) - 6px);
+      opacity: 0.3;
+      pointer-events: none;
+      transition: opacity 0.4s var(--ease-out);
+    }
+    .cert-frame:hover .cert-frame-inner::before { opacity: 0.6; }
+    .cert-frame-inner::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .cert-frame:hover .cert-frame-inner {
+      border-color: var(--accent);
+      box-shadow:
+        0 12px 40px rgba(26,75,140,0.15),
+        0 4px 12px rgba(26,75,140,0.08),
+        inset 0 0 0 1px rgba(255,255,255,0.5);
+    }
+    .cert-seal {
+      width: 40px; height: 40px;
+      margin: 0 auto 1rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 8px rgba(212,168,67,0.3);
+      transition: transform 0.4s var(--ease);
+    }
+    .cert-frame:hover .cert-seal { transform: scale(1.1) rotate(-8deg); }
+    .cert-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.3rem;
+      color: var(--text);
+    }
+    .cert-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+    @media (max-width: 768px) {
+      .gallery-wall { gap: 1rem; }
+      .cert-frame { min-width: 160px; max-width: 240px; }
+      .cert-frame:nth-child(1),
+      .cert-frame:nth-child(3) { transform: none; }
+      .cert-frame:hover { transform: translateY(-4px) scale(1.02); }
+    }
+    @media (max-width: 560px) {
+      .cert-frame { min-width: 100%; max-width: 100%; }
+    }
+
+    /* Gallery Divider */
+    .gallery-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: 2.5rem 0 1.75rem;
+    }
+    .gallery-divider::before,
+    .gallery-divider::after {
+      content: '';
+      flex: 1;
+      max-width: 160px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-border), transparent);
+    }
+    .gallery-divider::before { background: linear-gradient(90deg, transparent, var(--accent-border)); }
+    .gallery-divider::after { background: linear-gradient(90deg, var(--accent-border), transparent); }
+    .divider-dot {
+      display: block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* Tools Showcase */
+    .tools-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+    .tool-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      transition: all 0.3s var(--ease-out);
+      cursor: default;
+    }
+    .tool-card:hover {
+      border-color: var(--accent-border);
+      background: var(--accent-subtle);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    .tool-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--tool-color, var(--accent));
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px rgba(255,255,255,0.8), 0 0 0 4px color-mix(in srgb, var(--tool-color, var(--accent)) 15%, transparent);
+      transition: transform 0.3s var(--ease);
+    }
+    .tool-card:hover .tool-dot { transform: scale(1.3); }
+    .tool-info { min-width: 0; }
+    .tool-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tool-desc {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    @media (max-width: 768px) {
+      .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 400px) {
+      .tools-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── PDF Download Block ──────────────────── */
+    .pdf-block {
+      margin-top: 3.5rem;
+      text-align: center;
+      position: relative;
+    }
+    .pdf-block::before {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-border), transparent);
+      margin: 0 auto 1.5rem;
+    }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1rem 2.5rem 1rem 2rem;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: var(--font-cn);
+      text-decoration: none;
+      background: var(--accent);
+      color: white;
+      border: none;
+      transition: all 0.35s var(--ease-out);
+      position: relative;
+      box-shadow: 0 4px 16px rgba(26,75,140,0.25);
+    }
+    .btn-download::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.35s var(--ease-out);
+    }
+    .btn-download:hover {
+      background: var(--accent-dark);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(26,75,140,0.35);
+    }
+    .btn-download:hover::before { opacity: 1; }
+    .btn-download-icon { font-size: 1.15rem; position: relative; z-index: 1; }
+    .btn-download-text { position: relative; z-index: 1; letter-spacing: 0.02em; }
+    .btn-download-arrow {
+      position: relative; z-index: 1;
+      transition: transform 0.3s var(--ease);
+    }
+    .btn-download:hover .btn-download-arrow {
+      transform: translateX(6px);
+    }
+    .btn-underline {
+      position: absolute;
+      top: calc(50% - 10px);
+      left: 0;
+      width: 100%;
+      height: 36px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .btn-underline-path {
+      stroke: rgba(255,255,255,0.55);
+      stroke-width: 2;
+      stroke-linecap: round;
+      fill: none;
+      stroke-dasharray: 271;
+      stroke-dashoffset: 271;
+      transition: stroke-dashoffset 4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-download:hover .btn-underline-path {
+      stroke-dashoffset: 0;
+    }
+
+    /* ─── Section Links ──────────────────────── */
+    .section-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .section-links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--accent);
+      transition: all var(--transition);
+    }
+    .section-links a:hover {
+      opacity: 0.7;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tiles-bg" id="tilesBg" aria-hidden="true">
+    <canvas id="bgPathsCanvas"></canvas>
+  </div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Qi JunHao<span class="dot">.</span></a>
+
+    <div class="nav-gooey" id="navGooey"></div>
+
+    <div class="nav-right">
+      <div class="lang-toggle" id="langToggle">
+        <span class="lang-item" data-lang="zh" data-full="简体中文">简</span>
+        <span class="lang-item" data-lang="en" data-full="English">EN</span>
+        <span class="lang-item" data-lang="hant" data-full="繁體中文">繁</span>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="切换主题" data-i18n-aria="theme.aria">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+  <!-- Page Header -->
+  <header class="page-header" style="position:relative;z-index:2;">
+    <div class="page-header-inner">
+      <span class="page-tag reveal">RESUME</span>
+      <h1 class="reveal reveal-delay-1" data-i18n="hero.title">简历</h1>
+      <p class="page-desc reveal reveal-delay-2" data-i18n="hero.desc">从课堂到投行，从量化到行业研究——不断拓展金融视野</p>
+      <div class="stats-row reveal reveal-delay-3">
+        <div class="stat-item">
+          <div class="stat-value" data-i18n="stat.degree">金融 · 本科</div>
+          <div class="stat-label" data-i18n="stat.degreeLabel">学历</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" data-i18n="stat.mini">MBA · 微专业</div>
+          <div class="stat-label" data-i18n="stat.miniLabel">深造</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">3+</div>
+          <div class="stat-label" data-i18n="stat.expLabel">实习经历</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">7+</div>
+          <div class="stat-label" data-i18n="stat.compLabel">比赛奖项</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">3+</div>
+          <div class="stat-label" data-i18n="stat.researchLabel">学术项目</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Education -->
+  <section class="section" style="position:relative;z-index:2;">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <h2 data-i18n="edu.title">🎓 教育</h2>
+        <p class="section-desc" data-i18n="edu.desc">学术背景与专业训练</p>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-card reveal reveal-delay-1">
+          <div class="edu-card-top">
+            <div>
+              <div class="edu-card-title" data-i18n="edu.uni.title">
+                本科 · 华东理工大学 · 商学院
+                <small>经济学学士 · 金融学专业</small>
+              </div>
+            </div>
+            <div class="edu-tags">
+              <span class="edu-tag" data-i18n="edu.uni.tag211">211</span>
+              <span class="edu-tag" data-i18n="edu.uni.tag211x">双一流</span>
+            </div>
+          </div>
+          <div class="edu-date">2023.09 – 2027.06</div>
+          <div class="edu-courses" data-i18n="edu.uni.courses">
+            公司金融 · 财务管理 · 固定收益 · 证券投资 · 风险管理 · 金融工程 · 统计学
+          </div>
+        </div>
+        <div class="edu-card reveal reveal-delay-2">
+          <div class="edu-card-top">
+            <div>
+              <div class="edu-card-title" data-i18n="edu.mba.title">
+                MBA · 华东理工大学
+                <small>Mini-MBA 体系</small>
+              </div>
+            </div>
+          </div>
+          <div class="edu-date">2025.09 – 2027.02</div>
+          <div class="edu-courses" data-i18n="edu.mba.courses">
+            组织行为学 · 商务管理沟通 · 商业伦理 · 管理经济学 · 营销管理 · 行动学习
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section" style="position:relative;z-index:2;background:var(--bg-soft);">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <h2 data-i18n="exp.title">💼 实习经历</h2>
+        <p class="section-desc" data-i18n="exp.desc">从量化到投行，从研究到实业的金融实践</p>
+      </div>
+      <div class="timeline">
+        <!-- 1 -->
+        <div class="timeline-item reveal">
+          <div class="timeline-date" data-i18n="exp.gs.date">2026.05 – 至今</div>
+          <div class="timeline-title" data-i18n="exp.gs.title">有色金属行业研究实习生</div>
+          <div class="timeline-sub" data-i18n="exp.gs.sub">国盛证券</div>
+          <div class="timeline-desc">
+            <ul>
+              <li data-i18n="exp.gs.d1">负责黄金、白银等贵金属市场日常跟踪，统计交易数据与期货持仓量，定期更新研究日报</li>
+              <li data-i18n="exp.gs.d2">参与上市公司业绩说明会、电话会议纪要撰写，覆盖矿山生产经营、成本变化等核心议题</li>
+              <li data-i18n="exp.gs.d3">深度跟踪中国黄金国际等重点标的，分析甲玛铜矿扩产规划、NI43-101 储量报告进展</li>
+            </ul>
+          </div>
+        </div>
+        <!-- 2 -->
+        <div class="timeline-item reveal reveal-delay-1">
+          <div class="timeline-date">2026.03 – 2026.05</div>
+          <div class="timeline-title" data-i18n="exp.citic.title">投资银行部实习生</div>
+          <div class="timeline-sub" data-i18n="exp.citic.sub">中信证券</div>
+          <div class="timeline-desc">
+            <ul>
+              <li data-i18n="exp.citic.d1">参与资本市场并购重组案例研究，围绕B股改革、换股吸收合并及国企资源整合开展分析</li>
+              <li data-i18n="exp.citic.d2">研究中国国航并购山东航空、上海城投吸收合并阳晨B、中国能建吸收合并葛洲坝等典型案例</li>
+              <li data-i18n="exp.citic.d3">分析交易结构与估值逻辑、换股定价机制及政策监管环境对并购交易的影响，撰写研究报告</li>
+            </ul>
+          </div>
+        </div>
+        <!-- 3 -->
+        <div class="timeline-item reveal reveal-delay-2">
+          <div class="timeline-date">2025.07 – 2025.09</div>
+          <div class="timeline-title" data-i18n="exp.quant.title">量化投资实习生</div>
+          <div class="timeline-sub" data-i18n="exp.quant.sub">广东德粤赑鑫私募证券投资基金管理合伙企业（有限合伙）（Golden Quant）</div>
+          <div class="timeline-desc">
+            <ul>
+              <li data-i18n="exp.quant.d1">研读券商研报，跟踪A股与衍生品市场动态，参与量化投资策略构建</li>
+              <li data-i18n="exp.quant.d2">参与期权、期货实盘测试，协助优化CTA与指数增强策略</li>
+              <li data-i18n="exp.quant.d3">参与产品路演，推动"1000指增"产品募集¥500万；独立完成合作券商尽职调查报告</li>
+              <li data-i18n="exp.quant.d4">协助投资者沟通，促成个人与机构投资累计约¥700万认购基金产品</li>
+            </ul>
+          </div>
+        </div>
+        <!-- 4 -->
+        <div class="timeline-item reveal reveal-delay-3">
+          <div class="timeline-date">2023.08</div>
+          <div class="timeline-title" data-i18n="exp.qiyuan.title">国际贸易与汇率风险管理</div>
+          <div class="timeline-sub" data-i18n="exp.qiyuan.sub">深圳启源电器有限公司</div>
+          <div class="timeline-desc">
+            <ul>
+              <li data-i18n="exp.qiyuan.d1">分析远期汇率与避险工具在跨国贸易中的作用</li>
+              <li data-i18n="exp.qiyuan.d2">设计基于期权的远期锁汇方案以降低汇率波动风险，提升利润稳定性</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competitions -->
+  <section class="section" style="position:relative;z-index:2;">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <h2 data-i18n="comp.title">🏆 比赛经历</h2>
+        <p class="section-desc" data-i18n="comp.desc">从辩论到创新创业，以赛促学</p>
+      </div>
+      <div class="comp-grid">
+        <!-- 1 -->
+        <div class="comp-card reveal" data-tier="silver">
+          <div class="comp-card-top">
+            <div class="comp-card-icon">💡</div>
+            <div class="comp-card-name" data-i18n="comp.c1.name">全国大学生电子商务"创新、创意及创业"挑战赛</div>
+            <span class="comp-card-badge silver" data-i18n="comp.c1.badge">🥈 上海市二等奖</span>
+          </div>
+          <div class="comp-card-meta">
+            <span data-i18n="comp.c1.role">👤 金融负责人</span>
+            <span>📅 2025.09 – 2026.06</span>
+          </div>
+          <div class="comp-card-desc" data-i18n="comp.c1.desc">基于生鲜冷链运输中缺乏温度溯源数据的问题，设计温控溯源系统，涵盖硬件+软件+数据三位一体，带领团队代表学校参加上海市比赛</div>
+        </div>
+        <!-- 2 -->
+        <div class="comp-card reveal reveal-delay-1" data-tier="silver">
+          <div class="comp-card-top">
+            <div class="comp-card-icon">🏆</div>
+            <div class="comp-card-name" data-i18n="comp.c2.name">上海市唐城杯跨境电商大赛</div>
+            <span class="comp-card-badge silver" data-i18n="comp.c2.badge">🥈 上海市二等奖</span>
+          </div>
+          <div class="comp-card-meta">
+            <span data-i18n="comp.c2.role">👤 团队负责人</span>
+            <span data-i18n="comp.c2.prize">💰 ¥5,000 奖金</span>
+            <span>📅 2025.09 – 2025.10</span>
+          </div>
+          <div class="comp-card-desc" data-i18n="comp.c2.desc">负责产品定价策略、合规报关与亚马逊平台营销，实现利润率60%，在48支决赛队伍中排名第6</div>
+        </div>
+        <!-- 3 -->
+        <div class="comp-card reveal reveal-delay-2" data-tier="gold">
+          <div class="comp-card-top">
+            <div class="comp-card-icon">🚁</div>
+            <div class="comp-card-name" data-i18n="comp.c3.name">中国国际大学生创新大赛</div>
+            <span class="comp-card-badge gold" data-i18n="comp.c3.badge">🏅 校级一等奖</span>
+          </div>
+          <div class="comp-card-meta">
+            <span data-i18n="comp.c3.role">👤 团队负责人</span>
+            <span>📅 2025.02 – 2025.08</span>
+          </div>
+          <div class="comp-card-desc" data-i18n="comp.c3.desc">领导9人团队，以"低空经济助力三农运输"为主题设计无人机农村物流体系</div>
+        </div>
+        <!-- 4 -->
+        <div class="comp-card reveal reveal-delay-3" data-tier="special">
+          <div class="comp-card-top">
+            <div class="comp-card-icon">🗣️</div>
+            <div class="comp-card-name" data-i18n="comp.c4.name">"外研社·国才杯"全国大学生英语辩论赛</div>
+            <span class="comp-card-badge special" data-i18n="comp.c4.badge">🎤 最佳辩手</span>
+          </div>
+          <div class="comp-card-meta">
+            <span>📅 2025</span>
+          </div>
+          <div class="comp-card-desc" data-i18n="comp.c4.desc">主题涵盖社会、伦理、经济与政策；代表学校参赛</div>
+        </div>
+        <!-- 5 -->
+        <div class="comp-card reveal reveal-delay-4" data-tier="bronze">
+          <div class="comp-card-top">
+            <div class="comp-card-icon">🔧</div>
+            <div class="comp-card-name" data-i18n="comp.c5.name">大学生工程实践与创新能力大赛</div>
+            <span class="comp-card-badge bronze" data-i18n="comp.c5.badge">🥉 上海市三等奖</span>
+          </div>
+          <div class="comp-card-meta">
+            <span data-i18n="comp.c5.role">👤 金融负责人</span>
+            <span>📅 2024.09 – 2024.11</span>
+          </div>
+          <div class="comp-card-desc" data-i18n="comp.c5.desc">负责项目财务模型设计与成本核算，撰写投资可行性报告</div>
+        </div>
+        <!-- 6 -->
+        <div class="comp-card reveal reveal-delay-5" data-tier="silver">
+          <div class="comp-card-top">
+            <div class="comp-card-icon">🤖</div>
+            <div class="comp-card-name" data-i18n="comp.c6.name">中国国际大学生创新大赛</div>
+            <span class="comp-card-badge silver" data-i18n="comp.c6.badge">🥈 上海市二等奖</span>
+          </div>
+          <div class="comp-card-meta">
+            <span data-i18n="comp.c6.role">👤 金融负责人</span>
+            <span>📅 2024.05 – 2024.06</span>
+          </div>
+          <div class="comp-card-desc" data-i18n="comp.c6.desc">负责机器人×中医理疗融合项目的财务模型与资金规划</div>
+        </div>
+        <!-- 7 -->
+        <div class="comp-card reveal reveal-delay-6" data-tier="special">
+          <div class="comp-card-top">
+            <div class="comp-card-icon">🗣️</div>
+            <div class="comp-card-name" data-i18n="comp.c7.name">"外研社·国才杯"全国大学生英语辩论赛</div>
+            <span class="comp-card-badge special" data-i18n="comp.c7.badge">🥉 季军</span>
+          </div>
+          <div class="comp-card-meta">
+            <span>📅 2024</span>
+          </div>
+          <div class="comp-card-desc" data-i18n="comp.c7.desc">首次代表学校出战市级BP赛制英语辩论赛，在32支队伍中晋级半决赛</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section" style="position:relative;z-index:2;background:var(--bg-soft);">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <h2 data-i18n="proj.title">📊 项目研究</h2>
+        <p class="section-desc" data-i18n="proj.desc">学术研究与行业实践项目</p>
+      </div>
+      <div class="research-list">
+        <!-- 1 — 金融科技与区块链 2026.02 – 2026.06 -->
+        <div class="research-card reveal">
+          <div class="research-card-top">
+            <div>
+              <div class="research-card-label" data-i18n="proj.p1.label">/ 区块链</div>
+              <div class="research-card-title" data-i18n="proj.p1.title">金融科技与区块链应用研究</div>
+            </div>
+            <span class="research-card-date">2026.02 – 2026.06</span>
+          </div>
+          <div class="research-card-sub" data-i18n="proj.p1.sub">金融壹账通案例分析</div>
+          <div class="research-card-desc" data-i18n="proj.p1.desc">
+            研究区块链技术在供应链金融、贸易融资与数字身份认证中的落地实践，分析金融壹账通的平台架构、业务模式及行业应用前景。
+          </div>
+          <div class="research-card-tags">
+            <span class="research-card-tag accent" data-i18n="proj.p1.t1">区块链</span>
+            <span class="research-card-tag accent" data-i18n="proj.p1.t2">供应链金融</span>
+            <span class="research-card-tag accent" data-i18n="proj.p1.t3">金融壹账通</span>
+          </div>
+        </div>
+        <!-- 2 — 客户信用评级 2025.11 -->
+        <div class="research-card reveal reveal-delay-1">
+          <div class="research-card-top">
+            <div>
+              <div class="research-card-label" data-i18n="proj.p2.label">/ 信用评级</div>
+              <div class="research-card-title" data-i18n="proj.p2.title">客户信用评级报告</div>
+            </div>
+            <span class="research-card-date">2025.11</span>
+          </div>
+          <div class="research-card-sub" data-i18n="proj.p2.sub">贵州茅台</div>
+          <div class="research-card-desc" data-i18n="proj.p2.desc">
+            基于财务指标与行业地位对贵州茅台进行信用评级分析，评估其偿债能力、现金流状况及发展前景，完成结构化信用评级报告。
+          </div>
+          <div class="research-card-tags">
+            <span class="research-card-tag accent" data-i18n="proj.p2.t1">信用评级</span>
+            <span class="research-card-tag accent" data-i18n="proj.p2.t2">财务分析</span>
+            <span class="research-card-tag accent" data-i18n="proj.p2.t3">贵州茅台</span>
+          </div>
+        </div>
+        <!-- 3 — 恒大债务危机 2025.09 – 2025.12 -->
+        <div class="research-card reveal reveal-delay-2">
+          <div class="research-card-top">
+            <div>
+              <div class="research-card-label" data-i18n="proj.p3.label">/ 跨境金融</div>
+              <div class="research-card-title" data-i18n="proj.p3.title">恒大债务危机跨境清算研究</div>
+            </div>
+            <span class="research-card-date">2025.09 – 2025.12</span>
+          </div>
+          <div class="research-card-sub" data-i18n="proj.p3.sub">学术研究项目</div>
+          <div class="research-card-desc" data-i18n="proj.p3.desc">
+            分析恒大债务违约对跨境债券市场的影响，研究跨境清算机制与债权人保护法律框架，探讨中资企业境外债务重组的路径与启示。
+          </div>
+          <div class="research-card-tags">
+            <span class="research-card-tag accent" data-i18n="proj.p3.t1">跨境清算</span>
+            <span class="research-card-tag accent" data-i18n="proj.p3.t2">债务重组</span>
+            <span class="research-card-tag accent" data-i18n="proj.p3.t3">债券市场</span>
+          </div>
+        </div>
+        <!-- 4 — 东莞证券 · 华联期货 2025.07 -->
+        <div class="research-card reveal reveal-delay-3" data-variant="warm">
+          <div class="research-card-top">
+            <div>
+              <div class="research-card-label" data-i18n="proj.p4.label">/ 金融实践</div>
+              <div class="research-card-title" data-i18n="proj.p4.title">国债期货与股指期货套利策略调研</div>
+            </div>
+            <span class="research-card-date">2025.07</span>
+          </div>
+          <div class="research-card-sub" data-i18n="proj.p4.sub">东莞证券 · 华联期货</div>
+          <div class="research-card-desc">
+            <ul>
+              <li data-i18n="proj.p4.d1">调研国债期货与股指期货套利策略在风险管理中的应用</li>
+              <li data-i18n="proj.p4.d2">分析美元指数与美债指数联动机制，理解全球流动性收紧对利率预期的影响</li>
+            </ul>
+          </div>
+          <div class="research-card-tags">
+            <span class="research-card-tag accent" data-i18n="proj.p4.t1">国债期货</span>
+            <span class="research-card-tag accent" data-i18n="proj.p4.t2">股指期货</span>
+            <span class="research-card-tag accent" data-i18n="proj.p4.t3">套利策略</span>
+            <span class="research-card-tag accent" data-i18n="proj.p4.t4">风险管理</span>
+          </div>
+        </div>
+        <!-- 5 — 中金财富 2024.01 -->
+        <div class="research-card reveal reveal-delay-4" data-variant="warm">
+          <div class="research-card-top">
+            <div>
+              <div class="research-card-label" data-i18n="proj.p5.label">/ 金融实践</div>
+              <div class="research-card-title" data-i18n="proj.p5.title">中金财富管理 · 财务战略研习</div>
+            </div>
+            <span class="research-card-date">2024.01</span>
+          </div>
+          <div class="research-card-sub" data-i18n="proj.p5.sub">中金财富</div>
+          <div class="research-card-desc">
+            <ul>
+              <li data-i18n="proj.p5.d1">系统学习因子分析、量化策略构建及组合优化</li>
+              <li data-i18n="proj.p5.d2">探讨事件驱动因子权重变化的逻辑机制，深化量化投资理论理解</li>
+            </ul>
+          </div>
+          <div class="research-card-tags">
+            <span class="research-card-tag accent" data-i18n="proj.p5.t1">因子分析</span>
+            <span class="research-card-tag accent" data-i18n="proj.p5.t2">量化策略</span>
+            <span class="research-card-tag accent" data-i18n="proj.p5.t3">组合优化</span>
+            <span class="research-card-tag accent" data-i18n="proj.p5.t4">中金公司</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Campus Atlas -->
+  <section class="section" style="position:relative;z-index:2;">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <h2 style="display:flex;align-items:center;gap:0.5rem;" data-i18n="campus.title">
+          <span style="display:inline-flex;width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#1A4B8C,#3A7BC8);color:#fff;align-items:center;justify-content:center;font-size:0.85rem;">✦</span>
+          校园经历
+        </h2>
+        <p class="section-desc" data-i18n="campus.desc">社团 · 荣誉 · 公益——三维度的校园足迹</p>
+      </div>
+      <div class="campus-atlas reveal">
+        <div class="campus-atlas-grid">
+
+          <!-- 音乐·艺术 -->
+          <div class="campus-zone zone-music reveal">
+            <div class="campus-zone-inner">
+              <div class="campus-zone-header">
+                <span class="campus-zone-icon">♩</span>
+                <span class="campus-zone-label" data-i18n="campus.music.label">音乐 · 艺术</span>
+                <span class="campus-zone-count">5</span>
+              </div>
+              <div class="campus-clubs">
+                <span class="campus-club" data-i18n="campus.music.c1">华理钢琴协会</span>
+                <span class="campus-club" data-i18n="campus.music.c2">华理吉他社</span>
+                <span class="campus-club" data-i18n="campus.music.c3">艺海艺术团</span>
+                <span class="campus-club" data-i18n="campus.music.c4">华东理工大学 · 校合唱团</span>
+                <span class="campus-club" data-i18n="campus.music.c5">南洋歌舞基地</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 体育·竞技 -->
+          <div class="campus-zone zone-sports reveal">
+            <div class="campus-zone-inner">
+              <div class="campus-zone-header">
+                <span class="campus-zone-icon">⚽</span>
+                <span class="campus-zone-label" data-i18n="campus.sports.label">体育 · 竞技</span>
+                <span class="campus-zone-count">3</span>
+              </div>
+              <div class="campus-clubs">
+                <span class="campus-club" data-i18n="campus.sports.c1">华理网球社</span>
+                <span class="campus-club" data-i18n="campus.sports.c2">"飞羽"羽毛球社</span>
+                <span class="campus-club" data-i18n="campus.sports.c3">华理健身社</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 学术·商业 -->
+          <div class="campus-zone zone-academic reveal">
+            <div class="campus-zone-inner">
+              <div class="campus-zone-header">
+                <span class="campus-zone-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </span>
+                <span class="campus-zone-label" data-i18n="campus.academic.label">学术 · 商业</span>
+                <span class="campus-zone-count">3</span>
+              </div>
+              <div class="campus-clubs">
+                <span class="campus-club" data-i18n="campus.academic.c1">MBA商务管理协会</span>
+                <span class="campus-club" data-i18n="campus.academic.c2">未来企业家协会</span>
+                <span class="campus-club" data-i18n="campus.academic.c3">ERP沙盘协会</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 语言·文化 -->
+          <div class="campus-zone zone-language reveal">
+            <div class="campus-zone-inner">
+              <div class="campus-zone-header">
+                <span class="campus-zone-icon">🌐</span>
+                <span class="campus-zone-label" data-i18n="campus.lang.label">语言 · 文化</span>
+                <span class="campus-zone-count">2</span>
+              </div>
+              <div class="campus-clubs">
+                <span class="campus-club" data-i18n="campus.lang.c1">英语演讲辩论协会</span>
+                <span class="campus-club" data-i18n="campus.lang.c2">华理广韵社</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 兴趣·拓展 -->
+          <div class="campus-zone zone-interest reveal">
+            <div class="campus-zone-inner">
+              <div class="campus-zone-header">
+                <span class="campus-zone-icon">✦</span>
+                <span class="campus-zone-label" data-i18n="campus.interest.label">兴趣 · 拓展</span>
+                <span class="campus-zone-count">3</span>
+              </div>
+              <div class="campus-clubs">
+                <span class="campus-club" data-i18n="campus.interest.c1">华理遗传工程机器协会</span>
+                <span class="campus-club" data-i18n="campus.interest.c2">视觉摄影社</span>
+                <span class="campus-club" data-i18n="campus.interest.c3">棋艺社</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 学生工作·公益（网格右侧列） -->
+          <div class="campus-zone zone-service reveal">
+            <div class="campus-zone-inner">
+              <div class="campus-zone-header">
+                <span class="campus-zone-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </span>
+                <span class="campus-zone-label" data-i18n="campus.service.label">学生工作 · 公益</span>
+                <span class="campus-zone-count">2</span>
+              </div>
+              <div class="campus-clubs">
+                <span class="campus-club" style="border-color:rgba(20,184,166,0.25);color:#0D9488;" data-i18n="campus.service.c1">外联部</span>
+                <span class="campus-club" style="border-color:rgba(20,184,166,0.25);color:#0D9488;" data-i18n="campus.service.c2">青年志愿者协会</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 荣誉·职务（全宽，位于底部） -->
+        <div class="campus-honors reveal" style="margin-top:1rem;">
+          <div class="campus-honors-inner">
+            <div class="campus-honors-header">
+              <span class="campus-honors-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </span>
+              <span class="campus-honors-label" data-i18n="campus.honor.label">荣誉</span>
+              <span class="campus-honors-count">5</span>
+            </div>
+            <div class="campus-honors-items">
+              <span class="campus-honor-item" data-i18n="campus.honor.i1">
+                <span class="campus-honor-dot"></span>
+                校园最佳乐队
+              </span>
+              <span class="campus-honor-item" data-i18n="campus.honor.i2">
+                <span class="campus-honor-dot"></span>
+                羽毛球院队
+                <span class="campus-honor-tag">院赛第一名</span>
+              </span>
+              <span class="campus-honor-item" data-i18n="campus.honor.i3">
+                <span class="campus-honor-dot"></span>
+                英辩队副队长
+                <span class="campus-honor-tag">20+场全英辩论</span>
+              </span>
+              <span class="campus-honor-item" data-i18n="campus.honor.i4">
+                <span class="campus-honor-dot"></span>
+                社会工作奖 <span style="font-family:var(--font-mono);font-size:0.7rem;opacity:0.6;">2024 · 2025</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Merit Gallery: Certificates & Tools -->
+  <section class="section" style="position:relative;z-index:2;background:var(--bg-soft);">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <h2 data-i18n="cert.title">📜 资质认证</h2>
+        <p class="section-desc" data-i18n="cert.desc">专业资格 · 能力认证 · 工具栈</p>
+      </div>
+
+      <!-- Certificate Gallery Wall -->
+      <div class="gallery-wall reveal">
+        <div class="cert-frame">
+          <div class="cert-frame-inner">
+            <div class="cert-seal">🏅</div>
+            <div class="cert-title" data-i18n="cert.c1">基金从业资格证</div>
+            <div class="cert-sub">Fund Qualification Certificate</div>
+          </div>
+        </div>
+        <div class="cert-frame">
+          <div class="cert-frame-inner">
+            <div class="cert-seal">🏅</div>
+            <div class="cert-title" data-i18n="cert.c2">初级会计职称</div>
+            <div class="cert-sub">Junior Accounting Title</div>
+          </div>
+        </div>
+        <div class="cert-frame">
+          <div class="cert-frame-inner">
+            <div class="cert-seal">🏅</div>
+            <div class="cert-title" data-i18n="cert.c3">英语六级 511</div>
+            <div class="cert-sub">CET-6 · 511 / 710</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decorative Divider -->
+      <div class="gallery-divider reveal reveal-delay-1">
+        <span class="divider-dot"></span>
+      </div>
+
+      <!-- Tools Showcase -->
+      <div class="tools-showcase reveal reveal-delay-1">
+        <div class="tools-label" data-i18n="tools.label">🧰 工具栈</div>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-dot" style="--tool-color:#1A4B8C;"></div>
+            <div class="tool-info">
+              <div class="tool-name">Excel</div>
+              <div class="tool-desc" data-i18n="tools.t1">数据透视表</div>
+            </div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-dot" style="--tool-color:#3B82F6;"></div>
+            <div class="tool-info">
+              <div class="tool-name">SPSS / STATA</div>
+              <div class="tool-desc" data-i18n="tools.t2">计量分析与建模</div>
+            </div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-dot" style="--tool-color:#D4A843;"></div>
+            <div class="tool-info">
+              <div class="tool-name">PowerPoint</div>
+              <div class="tool-desc" data-i18n="tools.t3">研究报告 · 路演材料</div>
+            </div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-dot" style="--tool-color:#8B5CF6;"></div>
+            <div class="tool-info">
+              <div class="tool-name">AI Agent</div>
+              <div class="tool-desc" data-i18n="tools.t4">智能工作流 · 自动化</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PDF Download -->
+      <div class="pdf-block reveal reveal-delay-2">
+        <a href="/resume/resume.pdf" class="btn-download" target="_blank" rel="noopener">
+          <span class="btn-download-icon">📄</span>
+          <span class="btn-download-text" data-i18n="pdf.btn">下载完整简历 PDF</span>
+          <span class="btn-download-arrow">→</span>
+          <svg class="btn-underline" viewBox="0 0 240 36" fill="none" aria-hidden="true">
+            <path class="btn-underline-path" d="M 2,28 C 8,28 14,24 20,18 C 20,4 26,-4 34,-4 C 42,-4 48,4 48,18 C 52,15 70,10 110,8 C 150,6 175,26 200,22 C 212,20 220,17 236,15" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Back Link -->
+  <section class="section" style="position:relative;z-index:2;padding:4rem 2rem;">
+    <div class="section-inner">
+      <div class="section-links reveal">
+        <a href="/" data-i18n="back.home">→ 返回首页</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" style="position:relative;z-index:2;">
+    <div class="footer-inner">
+      <div class="footer-logo">Qi JunHao<span class="dot">.</span></div>
+      <p class="footer-text" data-i18n="foot.copyright">© 2026 戚俊皓 · 华东理工大学金融专业</p>
+      <p class="footer-text" style="opacity:0.5;font-size:0.8rem;margin-top:0.25rem;" data-i18n="foot.tagline">
+        用音乐表达，用镜头记录，用脚步丈量世界
+      </p>
+      <div class="footer-links">
+        <a href="/" data-i18n="foot.home">关于</a>
+        <a href="/music" data-i18n="foot.music">音乐</a>
+        <a href="/travel" data-i18n="foot.travel">旅行</a>
+        <a href="/photography" data-i18n="foot.photo">摄影</a>
+        <a href="/sports" data-i18n="foot.sport">运动</a>
+        <a href="/resume" data-i18n="foot.resume">简历</a>
+        <a href="/contact" data-i18n="foot.contact">联系</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="回到顶部" data-i18n-aria="top.aria">↑</button>
+
+<script>
+window.__PAGE_DEFAULT_LANG = 'zh';
+window.PAGE_I18N = {"zh": {"title": "简历 — 戚俊皓", "meta.desc": "戚俊皓的实习经历、比赛获奖与项目实践", "meta.ogtitle": "简历 | 戚俊皓", "meta.ogdesc": "从课堂到投行，从量化到行业研究——不断拓展金融视野", "hero.title": "简历", "hero.desc": "从课堂到投行，从量化到行业研究——不断拓展金融视野", "stat.degree": "金融 · 本科", "stat.degreeLabel": "学历", "stat.mini": "MBA · 微专业", "stat.miniLabel": "深造", "stat.expLabel": "实习经历", "stat.compLabel": "比赛奖项", "stat.researchLabel": "学术项目", "edu.title": "🎓 教育", "edu.desc": "学术背景与专业训练", "edu.uni.title": "本科 · 华东理工大学 · 商学院 <small>经济学学士 · 金融学专业</small>", "edu.uni.tag211": "211", "edu.uni.tag211x": "双一流", "edu.uni.courses": "公司金融 · 财务管理 · 固定收益 · 证券投资 · 风险管理 · 金融工程 · 统计学", "edu.mba.title": "MBA · 华东理工大学 <small>Mini-MBA 体系</small>", "edu.mba.courses": "组织行为学 · 商务管理沟通 · 商业伦理 · 管理经济学 · 营销管理 · 行动学习", "exp.title": "💼 实习经历", "exp.desc": "从量化到投行，从研究到实业的金融实践", "exp.gs.date": "2026.05 – 至今", "exp.gs.title": "有色金属行业研究实习生", "exp.gs.sub": "国盛证券", "exp.gs.d1": "负责黄金、白银等贵金属市场日常跟踪，统计交易数据与期货持仓量，定期更新研究日报", "exp.gs.d2": "参与上市公司业绩说明会、电话会议纪要撰写，覆盖矿山生产经营、成本变化等核心议题", "exp.gs.d3": "深度跟踪中国黄金国际等重点标的，分析甲玛铜矿扩产规划、NI43-101 储量报告进展", "exp.citic.title": "投资银行部实习生", "exp.citic.sub": "中信证券", "exp.citic.d1": "参与资本市场并购重组案例研究，围绕B股改革、换股吸收合并及国企资源整合开展分析", "exp.citic.d2": "研究中国国航并购山东航空、上海城投吸收合并阳晨B、中国能建吸收合并葛洲坝等典型案例", "exp.citic.d3": "分析交易结构与估值逻辑、换股定价机制及政策监管环境对并购交易的影响，撰写研究报告", "exp.quant.title": "量化投资实习生", "exp.quant.sub": "广东德粤赑鑫私募证券投资基金管理合伙企业（有限合伙）（Golden Quant）", "exp.quant.d1": "研读券商研报，跟踪A股与衍生品市场动态，参与量化投资策略构建", "exp.quant.d2": "参与期权、期货实盘测试，协助优化CTA与指数增强策略", "exp.quant.d3": "参与产品路演，推动\"1000指增\"产品募集¥500万；独立完成合作券商尽职调查报告", "exp.quant.d4": "协助投资者沟通，促成个人与机构投资累计约¥700万认购基金产品", "exp.qiyuan.title": "国际贸易与汇率风险管理", "exp.qiyuan.sub": "深圳启源电器有限公司", "exp.qiyuan.d1": "分析远期汇率与避险工具在跨国贸易中的作用", "exp.qiyuan.d2": "设计基于期权的远期锁汇方案以降低汇率波动风险，提升利润稳定性", "comp.title": "🏆 比赛经历", "comp.desc": "从辩论到创新创业，以赛促学", "comp.c1.name": "全国大学生电子商务\"创新、创意及创业\"挑战赛", "comp.c1.badge": "🥈 上海市二等奖", "comp.c1.role": "👤 金融负责人", "comp.c1.desc": "基于生鲜冷链运输中缺乏温度溯源数据的问题，设计温控溯源系统，涵盖硬件+软件+数据三位一体，带领团队代表学校参加上海市比赛", "comp.c2.name": "上海市唐城杯跨境电商大赛", "comp.c2.badge": "🥈 上海市二等奖", "comp.c2.role": "👤 团队负责人", "comp.c2.prize": "💰 ¥5,000 奖金", "comp.c2.desc": "负责产品定价策略、合规报关与亚马逊平台营销，实现利润率60%，在48支决赛队伍中排名第6", "comp.c3.name": "中国国际大学生创新大赛", "comp.c3.badge": "🏅 校级一等奖", "comp.c3.role": "👤 团队负责人", "comp.c3.desc": "领导9人团队，以\"低空经济助力三农运输\"为主题设计无人机农村物流体系", "comp.c4.name": "\"外研社·国才杯\"全国大学生英语辩论赛", "comp.c4.badge": "🎤 最佳辩手", "comp.c4.desc": "主题涵盖社会、伦理、经济与政策；代表学校参赛", "comp.c5.name": "大学生工程实践与创新能力大赛", "comp.c5.badge": "🥉 上海市三等奖", "comp.c5.role": "👤 金融负责人", "comp.c5.desc": "负责项目财务模型设计与成本核算，撰写投资可行性报告", "comp.c6.name": "中国国际大学生创新大赛", "comp.c6.badge": "🥈 上海市二等奖", "comp.c6.role": "👤 金融负责人", "comp.c6.desc": "负责机器人×中医理疗融合项目的财务模型与资金规划", "comp.c7.name": "\"外研社·国才杯\"全国大学生英语辩论赛", "comp.c7.badge": "🥉 季军", "comp.c7.desc": "首次代表学校出战市级BP赛制英语辩论赛，在32支队伍中晋级半决赛", "proj.title": "📊 项目研究", "proj.desc": "学术研究与行业实践项目", "proj.p1.label": "/ 区块链", "proj.p1.title": "金融科技与区块链应用研究", "proj.p1.sub": "金融壹账通案例分析", "proj.p1.desc": "研究区块链技术在供应链金融、贸易融资与数字身份认证中的落地实践，分析金融壹账通的平台架构、业务模式及行业应用前景。", "proj.p1.t1": "区块链", "proj.p1.t2": "供应链金融", "proj.p1.t3": "金融壹账通", "proj.p2.label": "/ 信用评级", "proj.p2.title": "客户信用评级报告", "proj.p2.sub": "贵州茅台", "proj.p2.desc": "基于财务指标与行业地位对贵州茅台进行信用评级分析，评估其偿债能力、现金流状况及发展前景，完成结构化信用评级报告。", "proj.p2.t1": "信用评级", "proj.p2.t2": "财务分析", "proj.p2.t3": "贵州茅台", "proj.p3.label": "/ 跨境金融", "proj.p3.title": "恒大债务危机跨境清算研究", "proj.p3.sub": "学术研究项目", "proj.p3.desc": "分析恒大债务违约对跨境债券市场的影响，研究跨境清算机制与债权人保护法律框架，探讨中资企业境外债务重组的路径与启示。", "proj.p3.t1": "跨境清算", "proj.p3.t2": "债务重组", "proj.p3.t3": "债券市场", "proj.p4.label": "/ 金融实践", "proj.p4.title": "国债期货与股指期货套利策略调研", "proj.p4.sub": "东莞证券 · 华联期货", "proj.p4.d1": "调研国债期货与股指期货套利策略在风险管理中的应用", "proj.p4.d2": "分析美元指数与美债指数联动机制，理解全球流动性收紧对利率预期的影响", "proj.p4.t1": "国债期货", "proj.p4.t2": "股指期货", "proj.p4.t3": "套利策略", "proj.p4.t4": "风险管理", "proj.p5.label": "/ 金融实践", "proj.p5.title": "中金财富管理 · 财务战略研习", "proj.p5.sub": "中金财富", "proj.p5.d1": "系统学习因子分析、量化策略构建及组合优化", "proj.p5.d2": "探讨事件驱动因子权重变化的逻辑机制，深化量化投资理论理解", "proj.p5.t1": "因子分析", "proj.p5.t2": "量化策略", "proj.p5.t3": "组合优化", "proj.p5.t4": "中金公司", "campus.title": "<span style=\"display:inline-flex;width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#1A4B8C,#3A7BC8);color:#fff;align-items:center;justify-content:center;font-size:0.85rem;\">✦</span>校园经历", "campus.desc": "社团 · 荣誉 · 公益——三维度的校园足迹", "campus.music.label": "音乐 · 艺术", "campus.music.c1": "华理钢琴协会", "campus.music.c2": "华理吉他社", "campus.music.c3": "艺海艺术团", "campus.music.c4": "华东理工大学 · 校合唱团", "campus.music.c5": "南洋歌舞基地", "campus.sports.label": "体育 · 竞技", "campus.sports.c1": "华理网球社", "campus.sports.c2": "\"飞羽\"羽毛球社", "campus.sports.c3": "华理健身社", "campus.academic.label": "学术 · 商业", "campus.academic.c1": "MBA商务管理协会", "campus.academic.c2": "未来企业家协会", "campus.academic.c3": "ERP沙盘协会", "campus.lang.label": "语言 · 文化", "campus.lang.c1": "英语演讲辩论协会", "campus.lang.c2": "华理广韵社", "campus.interest.label": "兴趣 · 拓展", "campus.interest.c1": "华理遗传工程机器协会", "campus.interest.c2": "视觉摄影社", "campus.interest.c3": "棋艺社", "campus.service.label": "学生工作 · 公益", "campus.service.c1": "外联部", "campus.service.c2": "青年志愿者协会", "campus.honor.label": "荣誉", "campus.honor.i1": "<span class=\"campus-honor-dot\"></span>校园最佳乐队", "campus.honor.i2": "<span class=\"campus-honor-dot\"></span>羽毛球院队 <span class=\"campus-honor-tag\">院赛第一名</span>", "campus.honor.i3": "<span class=\"campus-honor-dot\"></span>英辩队副队长 <span class=\"campus-honor-tag\">20+场全英辩论</span>", "campus.honor.i4": "<span class=\"campus-honor-dot\"></span>社会工作奖 <span style=\"font-family:var(--font-mono);font-size:0.7rem;opacity:0.6;\">2024 · 2025</span>", "cert.title": "📜 资质认证", "cert.desc": "专业资格 · 能力认证 · 工具栈", "cert.c1": "基金从业资格证", "cert.c2": "初级会计职称", "cert.c3": "英语六级 511", "tools.label": "🧰 工具栈", "tools.t1": "数据透视表", "tools.t2": "计量分析与建模", "tools.t3": "研究报告 · 路演材料", "tools.t4": "智能工作流 · 自动化", "pdf.btn": "下载完整简历 PDF", "back.home": "→ 返回首页", "foot.copyright": "© 2026 戚俊皓 · 华东理工大学金融专业", "foot.tagline": "用音乐表达，用镜头记录，用脚步丈量世界", "foot.home": "关于", "foot.music": "音乐", "foot.travel": "旅行", "foot.photo": "摄影", "foot.sport": "运动", "foot.resume": "简历", "foot.contact": "联系", "theme.aria": "切换主题", "top.aria": "回到顶部"}, "en": {"title": "Resume — Qi JunHao", "meta.desc": "Qi JunHao's internships, competition awards and project practice", "meta.ogtitle": "Resume | Qi JunHao", "meta.ogdesc": "From the classroom to investment banking, from quant to industry research — constantly expanding the financial horizon", "hero.title": "Resume", "hero.desc": "From the classroom to investment banking, from quant to industry research — constantly expanding the financial horizon", "stat.degree": "Finance · Bachelor", "stat.degreeLabel": "Degree", "stat.mini": "MBA · Mini-program", "stat.miniLabel": "Further Study", "stat.expLabel": "Internships", "stat.compLabel": "Awards", "stat.researchLabel": "Projects", "edu.title": "🎓 Education", "edu.desc": "Academic background and professional training", "edu.uni.title": "Bachelor · ECUST · School of Business <small>B.Econ · Finance</small>", "edu.uni.tag211": "211", "edu.uni.tag211x": "Double First-Class", "edu.uni.courses": "Corporate Finance · Financial Management · Fixed Income · Securities Investment · Risk Management · Financial Engineering · Statistics", "edu.mba.title": "MBA · ECUST <small>Mini-MBA Program</small>", "edu.mba.courses": "Organizational Behavior · Business Communication · Business Ethics · Managerial Economics · Marketing Management · Action Learning", "exp.title": "💼 Internships", "exp.desc": "From quant to investment banking, from research to industry", "exp.gs.date": "2026.05 – Present", "exp.gs.title": "Non-ferrous Metals Industry Research Intern", "exp.gs.sub": "Guosheng Securities", "exp.gs.d1": "Track daily precious metals markets (gold, silver): trading data, futures open interest, and daily research notes", "exp.gs.d2": "Draft earnings call and investor meeting minutes, covering mining operations and cost changes of listed companies", "exp.gs.d3": "Deep-dive China Gold International and other key names; follow the Jiama copper mine expansion plan and NI 43-101 reserve reports", "exp.citic.title": "Investment Banking Intern", "exp.citic.sub": "CITIC Securities", "exp.citic.d1": "Researched M&A and restructuring cases: B-share reform, share-swap mergers and SOE resource consolidation", "exp.citic.d2": "Studied landmark deals: Air China–Shandong Airlines, Shanghai Chengtou–Yangchen B, Energy China–Gezhouba", "exp.citic.d3": "Analyzed deal structures, valuation logic, share-swap pricing and the regulatory environment; authored research reports", "exp.quant.title": "Quantitative Investment Intern", "exp.quant.sub": "Guangdong Deyue Beixin Private Securities Fund Management Partnership (Golden Quant)", "exp.quant.d1": "Read brokerage research, tracked A-share and derivatives markets, contributed to quant strategy construction", "exp.quant.d2": "Participated in live options/futures testing; helped optimize CTA and index-enhancement strategies", "exp.quant.d3": "Supported product roadshows, driving ¥5M raised for the \"1000 index-enhancement\" product; independently completed due-diligence reports on partner brokers", "exp.quant.d4": "Assisted investor communications, facilitating ~¥7M in combined retail and institutional fund subscriptions", "exp.qiyuan.title": "International Trade & FX Risk Management", "exp.qiyuan.sub": "Shenzhen Qiyuan Electric Co., Ltd.", "exp.qiyuan.d1": "Analyzed the role of forward FX contracts and hedging tools in cross-border trade", "exp.qiyuan.d2": "Designed an option-based forward FX locking scheme to reduce currency risk and stabilize margins", "comp.title": "🏆 Competitions", "comp.desc": "From debating to innovation — learning through competition", "comp.c1.name": "National College E-commerce \"Innovation, Creativity & Entrepreneurship\" Challenge", "comp.c1.badge": "🥈 2nd Prize, Shanghai", "comp.c1.role": "👤 Finance Lead", "comp.c1.desc": "Designed a temperature-control traceability system for cold-chain logistics (hardware + software + data), leading the team to represent ECUST at the Shanghai finals", "comp.c2.name": "Shanghai Tangcheng Cup Cross-border E-commerce Competition", "comp.c2.badge": "🥈 2nd Prize, Shanghai", "comp.c2.role": "👤 Team Lead", "comp.c2.prize": "💰 ¥5,000 Prize", "comp.c2.desc": "Owned pricing strategy, compliant customs clearance and Amazon marketing; achieved a 60% margin and ranked 6th of 48 finalists", "comp.c3.name": "China International College Students' Innovation Competition", "comp.c3.badge": "🏅 1st Prize, University", "comp.c3.role": "👤 Team Lead", "comp.c3.desc": "Led a 9-person team to design a drone-based rural logistics system for the \"low-altitude economy serving agriculture\" theme", "comp.c4.name": "\"FLTRP · Guocai Cup\" National English Debating Competition", "comp.c4.badge": "🎤 Best Debater", "comp.c4.desc": "Topics spanned society, ethics, economics and policy; represented the university in the national event", "comp.c5.name": "College Students' Engineering Practice & Innovation Competition", "comp.c5.badge": "🥉 3rd Prize, Shanghai", "comp.c5.role": "👤 Finance Lead", "comp.c5.desc": "Built project financial models and cost accounting; authored the investment feasibility report", "comp.c6.name": "China International College Students' Innovation Competition", "comp.c6.badge": "🥈 2nd Prize, Shanghai", "comp.c6.role": "👤 Finance Lead", "comp.c6.desc": "Financial modeling and capital planning for a robotics × TCM physiotherapy project", "comp.c7.name": "\"FLTRP · Guocai Cup\" National English Debating Competition", "comp.c7.badge": "🥉 Third Place", "comp.c7.desc": "First time representing the university in a city-level BP-format English debate; reached the semifinals among 32 teams", "proj.title": "📊 Research Projects", "proj.desc": "Academic research and industry practice", "proj.p1.label": "/ Blockchain", "proj.p1.title": "FinTech & Blockchain Applications Research", "proj.p1.sub": "OneConnect Case Study", "proj.p1.desc": "Researched blockchain applications in supply chain finance, trade finance and digital identity; analyzed OneConnect's platform architecture, business model and industry outlook.", "proj.p1.t1": "Blockchain", "proj.p1.t2": "Supply Chain Finance", "proj.p1.t3": "OneConnect", "proj.p2.label": "/ Credit Rating", "proj.p2.title": "Customer Credit Rating Report", "proj.p2.sub": "Kweichow Moutai", "proj.p2.desc": "Assessed Kweichow Moutai's creditworthiness via financial metrics and industry position — solvency, cash flow and outlook — delivering a structured credit rating report.", "proj.p2.t1": "Credit Rating", "proj.p2.t2": "Financial Analysis", "proj.p2.t3": "Kweichow Moutai", "proj.p3.label": "/ Cross-border Finance", "proj.p3.title": "Evergrande Debt Crisis: Cross-border Liquidation Research", "proj.p3.sub": "Academic Research Project", "proj.p3.desc": "Analyzed the impact of Evergrande's default on cross-border bond markets, studied liquidation mechanisms and creditor-protection frameworks, and explored paths for offshore debt restructuring of Chinese issuers.", "proj.p3.t1": "Cross-border Liquidation", "proj.p3.t2": "Debt Restructuring", "proj.p3.t3": "Bond Market", "proj.p4.label": "/ Finance Practice", "proj.p4.title": "Treasury & Stock Index Futures Arbitrage Research", "proj.p4.sub": "Dongguan Securities · Hualian Futures", "proj.p4.d1": "Studied the role of treasury and index futures arbitrage strategies in risk management", "proj.p4.d2": "Analyzed the USD index–US Treasury index linkage and how global liquidity tightening shapes rate expectations", "proj.p4.t1": "Treasury Futures", "proj.p4.t2": "Index Futures", "proj.p4.t3": "Arbitrage", "proj.p4.t4": "Risk Management", "proj.p5.label": "/ Finance Practice", "proj.p5.title": "CICC Wealth Management · Financial Strategy Study", "proj.p5.sub": "CICC Wealth Management", "proj.p5.d1": "Studied factor analysis, quant strategy construction and portfolio optimization", "proj.p5.d2": "Explored the mechanics of event-driven factor weight shifts, deepening quant investment theory", "proj.p5.t1": "Factor Analysis", "proj.p5.t2": "Quant Strategies", "proj.p5.t3": "Portfolio Optimization", "proj.p5.t4": "CICC", "campus.title": "<span style=\"display:inline-flex;width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#1A4B8C,#3A7BC8);color:#fff;align-items:center;justify-content:center;font-size:0.85rem;\">✦</span>Campus Life", "campus.desc": "Clubs · Honors · Service — a three-dimensional campus footprint", "campus.music.label": "Music · Arts", "campus.music.c1": "ECUST Piano Association", "campus.music.c2": "ECUST Guitar Club", "campus.music.c3": "Yihai Art Troupe", "campus.music.c4": "ECUST University Choir", "campus.music.c5": "Nanyang Song & Dance Base", "campus.sports.label": "Sports · Athletics", "campus.sports.c1": "ECUST Tennis Club", "campus.sports.c2": "\"Feiyu\" Badminton Club", "campus.sports.c3": "ECUST Fitness Club", "campus.academic.label": "Academics · Business", "campus.academic.c1": "MBA Business Management Association", "campus.academic.c2": "Future Entrepreneurs Association", "campus.academic.c3": "ERP Sandbox Association", "campus.lang.label": "Language · Culture", "campus.lang.c1": "English Speech & Debate Association", "campus.lang.c2": "ECUST Guangyun Society", "campus.interest.label": "Interests · Exploration", "campus.interest.c1": "ECUST iGEM Association", "campus.interest.c2": "Vision Photography Club", "campus.interest.c3": "Chess & Board Games Club", "campus.service.label": "Student Work · Service", "campus.service.c1": "Public Relations Department", "campus.service.c2": "Youth Volunteer Association", "campus.honor.label": "Honors", "campus.honor.i1": "<span class=\"campus-honor-dot\"></span>Best Campus Band", "campus.honor.i2": "<span class=\"campus-honor-dot\"></span>Badminton College Team <span class=\"campus-honor-tag\">1st, College Tournament</span>", "campus.honor.i3": "<span class=\"campus-honor-dot\"></span>Vice Captain, English Debate Team <span class=\"campus-honor-tag\">20+ English Debates</span>", "campus.honor.i4": "<span class=\"campus-honor-dot\"></span>Social Work Award <span style=\"font-family:var(--font-mono);font-size:0.7rem;opacity:0.6;\">2024 · 2025</span>", "cert.title": "📜 Certifications", "cert.desc": "Professional qualifications · Certifications · Tool stack", "cert.c1": "Fund Practitioner Certificate", "cert.c2": "Junior Accounting Title", "cert.c3": "CET-6 · 511", "tools.label": "🧰 Tool Stack", "tools.t1": "Pivot Tables", "tools.t2": "Econometrics & Modeling", "tools.t3": "Research Reports · Pitch Decks", "tools.t4": "Smart Workflows · Automation", "pdf.btn": "Download Full Resume (PDF)", "back.home": "→ Back to Home", "foot.copyright": "© 2026 Qi JunHao · Finance, ECUST", "foot.tagline": "Express with music, capture with the lens, measure the world with footsteps", "foot.home": "About", "foot.music": "Music", "foot.travel": "Travel", "foot.photo": "Photography", "foot.sport": "Sport", "foot.resume": "Resume", "foot.contact": "Contact", "theme.aria": "Toggle theme", "top.aria": "Back to top"}, "hant": {"title": "履歷 — 戚俊皓", "meta.desc": "戚俊皓的實習經歷、比賽獲獎與項目實踐", "meta.ogtitle": "履歷 | 戚俊皓", "meta.ogdesc": "從課堂到投行，從量化到行業研究——不斷拓展金融視野", "hero.title": "履歷", "hero.desc": "從課堂到投行，從量化到行業研究——不斷拓展金融視野", "stat.degree": "金融 · 本科", "stat.degreeLabel": "學歷", "stat.mini": "MBA · 微專業", "stat.miniLabel": "深造", "stat.expLabel": "實習經歷", "stat.compLabel": "比賽獎項", "stat.researchLabel": "學術項目", "edu.title": "🎓 教育", "edu.desc": "學術背景與專業訓練", "edu.uni.title": "本科 · 華東理工大學 · 商學院 <small>經濟學學士 · 金融學專業</small>", "edu.uni.tag211": "211", "edu.uni.tag211x": "雙一流", "edu.uni.courses": "公司金融 · 財務管理 · 固定收益 · 證券投資 · 風險管理 · 金融工程 · 統計學", "edu.mba.title": "MBA · 華東理工大學 <small>Mini-MBA 體系</small>", "edu.mba.courses": "組織行為學 · 商務管理溝通 · 商業倫理 · 管理經濟學 · 營銷管理 · 行動學習", "exp.title": "💼 實習經歷", "exp.desc": "從量化到投行，從研究到實業的金融實踐", "exp.gs.date": "2026.05 – 至今", "exp.gs.title": "有色金屬行業研究實習生", "exp.gs.sub": "國盛證券", "exp.gs.d1": "負責黃金、白銀等貴金屬市場日常跟蹤，統計交易數據與期貨持倉量，定期更新研究日報", "exp.gs.d2": "參與上市公司業績說明會、電話會議紀要撰寫，覆蓋礦山生產經營、成本變化等核心議題", "exp.gs.d3": "深度跟蹤中國黃金國際等重點標的，分析甲瑪銅礦擴產規劃、NI43-101 儲量報告進展", "exp.citic.title": "投資銀行部實習生", "exp.citic.sub": "中信證券", "exp.citic.d1": "參與資本市場併購重組案例研究，圍繞B股改革、換股吸收合併及國企資源整合開展分析", "exp.citic.d2": "研究中國國航併購山東航空、上海城投吸收合併陽晨B、中國能建吸收合併葛洲壩等典型案例", "exp.citic.d3": "分析交易結構與估值邏輯、換股定價機制及政策監管環境對併購交易的影響，撰寫研究報告", "exp.quant.title": "量化投資實習生", "exp.quant.sub": "廣東德粵贔鑫私募證券投資基金管理合夥企業（有限合夥）（Golden Quant）", "exp.quant.d1": "研讀券商研報，跟蹤A股與衍生品市場動態，參與量化投資策略構建", "exp.quant.d2": "參與期權、期貨實盤測試，協助優化CTA與指數增強策略", "exp.quant.d3": "參與產品路演，推動\"1000指增\"產品募集¥500萬；獨立完成合作券商盡職調查報告", "exp.quant.d4": "協助投資者溝通，促成個人與機構投資累計約¥700萬認購基金產品", "exp.qiyuan.title": "國際貿易與匯率風險管理", "exp.qiyuan.sub": "深圳啟源電器有限公司", "exp.qiyuan.d1": "分析遠期匯率與避險工具在跨國貿易中的作用", "exp.qiyuan.d2": "設計基於期權的遠期鎖匯方案以降低匯率波動風險，提升利潤穩定性", "comp.title": "🏆 比賽經歷", "comp.desc": "從辯論到創新創業，以賽促學", "comp.c1.name": "全國大學生電子商務\"創新、創意及創業\"挑戰賽", "comp.c1.badge": "🥈 上海市二等獎", "comp.c1.role": "👤 金融負責人", "comp.c1.desc": "基於生鮮冷鏈運輸中缺乏溫度溯源數據的問題，設計溫控溯源系統，涵蓋硬件+軟件+數據三位一體，帶領團隊代表學校參加上海市比賽", "comp.c2.name": "上海市唐城杯跨境電商大賽", "comp.c2.badge": "🥈 上海市二等獎", "comp.c2.role": "👤 團隊負責人", "comp.c2.prize": "💰 ¥5,000 獎金", "comp.c2.desc": "負責產品定價策略、合規報關與亞馬遜平台營銷，實現利潤率60%，在48支決賽隊伍中排名第6", "comp.c3.name": "中國國際大學生創新大賽", "comp.c3.badge": "🏅 校級一等獎", "comp.c3.role": "👤 團隊負責人", "comp.c3.desc": "領導9人團隊，以\"低空經濟助力三農運輸\"為主題設計無人機農村物流體系", "comp.c4.name": "\"外研社·國才杯\"全國大學生英語辯論賽", "comp.c4.badge": "🎤 最佳辯手", "comp.c4.desc": "主題涵蓋社會、倫理、經濟與政策；代表學校參賽", "comp.c5.name": "大學生工程實踐與創新能力大賽", "comp.c5.badge": "🥉 上海市三等獎", "comp.c5.role": "👤 金融負責人", "comp.c5.desc": "負責項目財務模型設計與成本核算，撰寫投資可行性報告", "comp.c6.name": "中國國際大學生創新大賽", "comp.c6.badge": "🥈 上海市二等獎", "comp.c6.role": "👤 金融負責人", "comp.c6.desc": "負責機器人×中醫理療融合項目的財務模型與資金規劃", "comp.c7.name": "\"外研社·國才杯\"全國大學生英語辯論賽", "comp.c7.badge": "🥉 季軍", "comp.c7.desc": "首次代表學校出戰市級BP賽制英語辯論賽，在32支隊伍中晉級半決賽", "proj.title": "📊 項目研究", "proj.desc": "學術研究與行業實踐項目", "proj.p1.label": "/ 區塊鏈", "proj.p1.title": "金融科技與區塊鏈應用研究", "proj.p1.sub": "金融壹賬通案例分析", "proj.p1.desc": "研究區塊鏈技術在供應鏈金融、貿易融資與數字身份認證中的落地實踐，分析金融壹賬通的平台架構、業務模式及行業應用前景。", "proj.p1.t1": "區塊鏈", "proj.p1.t2": "供應鏈金融", "proj.p1.t3": "金融壹賬通", "proj.p2.label": "/ 信用評級", "proj.p2.title": "客戶信用評級報告", "proj.p2.sub": "貴州茅臺", "proj.p2.desc": "基於財務指標與行業地位對貴州茅臺進行信用評級分析，評估其償債能力、現金流狀況及發展前景，完成結構化信用評級報告。", "proj.p2.t1": "信用評級", "proj.p2.t2": "財務分析", "proj.p2.t3": "貴州茅臺", "proj.p3.label": "/ 跨境金融", "proj.p3.title": "恆大債務危機跨境清算研究", "proj.p3.sub": "學術研究項目", "proj.p3.desc": "分析恆大債務違約對跨境債券市場的影響，研究跨境清算機制與債權人保護法律框架，探討中資企業境外債務重組的路徑與啟示。", "proj.p3.t1": "跨境清算", "proj.p3.t2": "債務重組", "proj.p3.t3": "債券市場", "proj.p4.label": "/ 金融實踐", "proj.p4.title": "國債期貨與股指期貨套利策略調研", "proj.p4.sub": "東莞證券 · 華聯期貨", "proj.p4.d1": "調研國債期貨與股指期貨套利策略在風險管理中的應用", "proj.p4.d2": "分析美元指數與美債指數聯動機制，理解全球流動性收緊對利率預期的影響", "proj.p4.t1": "國債期貨", "proj.p4.t2": "股指期貨", "proj.p4.t3": "套利策略", "proj.p4.t4": "風險管理", "proj.p5.label": "/ 金融實踐", "proj.p5.title": "中金財富管理 · 財務戰略研習", "proj.p5.sub": "中金財富", "proj.p5.d1": "系統學習因子分析、量化策略構建及組合優化", "proj.p5.d2": "探討事件驅動因子權重變化的邏輯機制，深化量化投資理論理解", "proj.p5.t1": "因子分析", "proj.p5.t2": "量化策略", "proj.p5.t3": "組合優化", "proj.p5.t4": "中金公司", "campus.title": "<span style=\"display:inline-flex;width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#1A4B8C,#3A7BC8);color:#fff;align-items:center;justify-content:center;font-size:0.85rem;\">✦</span>校園經歷", "campus.desc": "社團 · 榮譽 · 公益——三維度的校園足跡", "campus.music.label": "音樂 · 藝術", "campus.music.c1": "華理鋼琴協會", "campus.music.c2": "華理吉他社", "campus.music.c3": "藝海藝術團", "campus.music.c4": "華東理工大學 · 校合唱團", "campus.music.c5": "南洋歌舞基地", "campus.sports.label": "體育 · 競技", "campus.sports.c1": "華理網球社", "campus.sports.c2": "\"飛羽\"羽毛球社", "campus.sports.c3": "華理健身社", "campus.academic.label": "學術 · 商業", "campus.academic.c1": "MBA商務管理協會", "campus.academic.c2": "未來企業家協會", "campus.academic.c3": "ERP沙盤協會", "campus.lang.label": "語言 · 文化", "campus.lang.c1": "英語演講辯論協會", "campus.lang.c2": "華理廣韻社", "campus.interest.label": "興趣 · 拓展", "campus.interest.c1": "華理遺傳工程機器協會", "campus.interest.c2": "視覺攝影社", "campus.interest.c3": "棋藝社", "campus.service.label": "學生工作 · 公益", "campus.service.c1": "外聯部", "campus.service.c2": "青年志願者協會", "campus.honor.label": "榮譽", "campus.honor.i1": "<span class=\"campus-honor-dot\"></span>校園最佳樂隊", "campus.honor.i2": "<span class=\"campus-honor-dot\"></span>羽毛球院隊 <span class=\"campus-honor-tag\">院賽第一名</span>", "campus.honor.i3": "<span class=\"campus-honor-dot\"></span>英辯隊副隊長 <span class=\"campus-honor-tag\">20+場全英辯論</span>", "campus.honor.i4": "<span class=\"campus-honor-dot\"></span>社會工作獎 <span style=\"font-family:var(--font-mono);font-size:0.7rem;opacity:0.6;\">2024 · 2025</span>", "cert.title": "📜 資質認證", "cert.desc": "專業資格 · 能力認證 · 工具棧", "cert.c1": "基金從業資格證", "cert.c2": "初級會計職稱", "cert.c3": "英語六級 511", "tools.label": "🧰 工具棧", "tools.t1": "數據透視表", "tools.t2": "計量分析與建模", "tools.t3": "研究報告 · 路演材料", "tools.t4": "智能工作流 · 自動化", "pdf.btn": "下載完整履歷 PDF", "back.home": "→ 返回首頁", "foot.copyright": "© 2026 戚俊皓 · 華東理工大學金融專業", "foot.tagline": "用音樂表達，用鏡頭記錄，用腳步丈量世界", "foot.home": "關於", "foot.music": "音樂", "foot.travel": "旅行", "foot.photo": "攝影", "foot.sport": "運動", "foot.resume": "履歷", "foot.contact": "聯繫", "theme.aria": "切換主題", "top.aria": "回到頂部"}};
+</script>
+
+  <script src="../common.js"></script>
+  
+  
+  <script>
+    (function(){
+      const container = document.getElementById('tilesBg');
+      if (!container) return;
+      const cols = 8, rows = 50;
+      // Tile grid
+      const grid = document.createElement('div');
+      grid.className = 'tile-grid';
+      const frag = document.createDocumentFragment();
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const tile = document.createElement('div');
+          tile.className = 'tile';
+          frag.appendChild(tile);
+        }
+      }
+      grid.appendChild(frag);
+      container.appendChild(grid);
+
+      // ── Flowing Paths (canvas) ──
+      const canvas = document.getElementById('bgPathsCanvas');
+      if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const ctx = canvas.getContext('2d');
+      let W, H, paths = [], time = 0;
+      const COLOR = 'rgba(26,75,140,';
+
+      function resize() {
+        const dpr = window.devicePixelRatio || 1;
+        W = window.innerWidth;
+        H = window.innerHeight;
+        canvas.width = W * dpr;
+        canvas.height = H * dpr;
+        canvas.style.width = W + 'px';
+        canvas.style.height = H + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        initPaths();
+      }
+
+      function initPaths() {
+        paths = [];
+        const count = Math.max(3, Math.floor(W / 300));
+        for (let i = 0; i < count; i++) {
+          const yBase = H * (0.1 + Math.random() * 0.8);
+          const amp = 20 + Math.random() * 40;
+          const freq = 0.002 + Math.random() * 0.003;
+          const speed = 0.2 + Math.random() * 0.3;
+          const phase = Math.random() * Math.PI * 2;
+          const alpha = 0.12 + Math.random() * 0.18;
+          const width = 1 + Math.random() * 1.5;
+          paths.push({ yBase, amp, freq, speed, phase, alpha, width });
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        time += 0.01;
+        paths.forEach(p => {
+          ctx.beginPath();
+          ctx.moveTo(0, p.yBase + Math.sin(time * p.speed + 0 * p.freq) * p.amp);
+          for (let x = 0; x <= W; x += 3) {
+            const y = p.yBase + Math.sin(time * p.speed + x * p.freq + p.phase) * p.amp;
+            ctx.lineTo(x, y);
+          }
+          ctx.strokeStyle = COLOR + p.alpha + ')';
+          ctx.lineWidth = p.width;
+          ctx.stroke();
+        });
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      draw();
+    })();
+  </script>
+  <script src="../gooey-nav.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var gooeyContainer = document.getElementById('navGooey');
+    if (gooeyContainer && typeof window.GooeyNav === 'function') {
+      var lang = Prefs.get('lang') || 'zh';
+      window.GooeyNav(gooeyContainer, {
+        items: [
+          { label: '首页', href: '/' },
+          { label: '音乐', href: '/music' },
+          { label: '旅行', href: '/travel' },
+          { label: '摄影', href: '/photography' },
+          { label: '运动', href: '/sports' },
+          { label: '简历', href: '/resume' },
+          { label: '联系', href: '/contact' },
+        ],
+        animationTime: 600,
+        particleCount: 12,
+      });
+    }
+  });
+  </script>
+</body>

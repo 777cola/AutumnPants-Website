@@ -450,6 +450,38 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--accent-subtle);
 }
 
+/* 未完工板块：置灰 + 下方小字 */
+.gooey-nav-container nav ul li.nav-building {
+  cursor: default;
+}
+.gooey-nav-container nav ul li.nav-building a {
+  color: var(--text-muted);
+  opacity: 0.6;
+  cursor: default;
+  pointer-events: none;
+}
+.gooey-nav-container nav ul li.nav-building.active a,
+.gooey-nav-container nav ul li.nav-building a:hover {
+  color: var(--text-muted);
+  background: none;
+}
+.gooey-nav-container nav ul li.nav-building .nav-sub {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(100% - 1px);
+  text-align: center;
+  font-size: 0.625rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  opacity: 0.95;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
 .gooey-nav-container .effect {
   position: absolute;
   left: 0;
