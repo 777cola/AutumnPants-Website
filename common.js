@@ -85,7 +85,7 @@
       en: ['Home', 'Music', 'Travel', 'Photography', 'Sport', 'Resume', 'Contact'],
       hant: ['首頁', '音樂', '旅行', '攝影', '運動', '履歷', '聯繫']
     };
-    var NAV_SUB = { zh: '正在建设中', en: 'Coming Soon', hant: '正在建設中' };
+    var NAV_SUB = { zh: '构建中', en: 'Building', hant: '構建中' };
     // 占位页（旅行 / 摄影 / 运动）共用文案，页面可被 PAGE_I18N 覆盖
     var SHARED_I18N = {
       zh: { 'coming.status': '还没做好', 'coming.desc': '这个页面还在施工中<br>内容会放在这里', 'coming.back': '回到首页' },
