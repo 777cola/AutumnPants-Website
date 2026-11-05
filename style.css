@@ -128,9 +128,9 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
+  /* 只挡横向溢出；纵向必须留给页面滚动，否则 body 的 overflow 会传播到视口，整页滚不动 */
   overflow-x: hidden;
-  overflow: hidden;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 ::selection { background: var(--accent); color: white; }
