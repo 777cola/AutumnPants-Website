@@ -450,6 +450,14 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--accent-subtle);
 }
 
+/* 导航条定宽：切换语言时长度不变，避免整条导航左右伸缩（≤768 用移动端菜单，不受影响） */
+@media (min-width: 1100px) {
+  .gooey-nav-container nav ul {
+    width: 600px;
+    justify-content: space-evenly;
+  }
+}
+
 /* 未完工板块：置灰 + 下方小字 */
 .gooey-nav-container nav ul li.nav-building {
   cursor: default;
