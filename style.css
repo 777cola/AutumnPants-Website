@@ -869,7 +869,7 @@ img { max-width: 100%; height: auto; display: block; }
   margin-top: 0.9rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.35rem;
   font-size: 0.78rem;
   color: var(--text-muted);
   letter-spacing: 0.01em;
