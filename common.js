@@ -88,9 +88,9 @@
     var NAV_SUB = { zh: '构建中', en: 'Building', hant: '建置中' };
     // 占位页（旅行 / 摄影 / 运动）共用文案，页面可被 PAGE_I18N 覆盖
     var SHARED_I18N = {
-      zh: { 'coming.status': '还没做好', 'coming.desc': '这个页面还在施工中<br>内容会放在这里', 'coming.back': '回到首页' },
-      en: { 'coming.status': 'Not quite ready', 'coming.desc': 'Still putting this one together<br>Content lands here soon', 'coming.back': 'Back to Home' },
-      hant: { 'coming.status': '仲未整好', 'coming.desc': '呢頁仲喺度整緊<br>內容遲啲先至有', 'coming.back': '返去首頁' }
+      zh: { 'coming.status': '还没做好', 'coming.desc': '这个页面还在施工中<br>内容会放在这里', 'coming.back': '回到首页', 'foot.friend': '友情链接' },
+      en: { 'coming.status': 'Not quite ready', 'coming.desc': 'Still putting this one together<br>Content lands here soon', 'coming.back': 'Back to Home', 'foot.friend': 'Elsewhere' },
+      hant: { 'coming.status': '仲未整好', 'coming.desc': '呢頁仲喺度整緊<br>內容遲啲先至有', 'coming.back': '返去首頁', 'foot.friend': '友情連結' }
     };
 
     function renderPageI18N(lang) {
