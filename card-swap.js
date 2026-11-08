@@ -75,6 +75,7 @@
     var skewAmount = opts.skewAmount || 6;
     var easing = opts.easing || 'elastic';
     var onCardClick = opts.onCardClick || null;
+    var buildingText = opts.buildingText || '网站制作中';
 
     var total = items.length;
     if (total === 0) return;
@@ -152,7 +153,7 @@
       body.className = 'card-body';
 
       if (!item.image) {
-        body.textContent = '网站制作中';
+        body.textContent = buildingText;
         body.style.cssText = 'display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--text-muted);letter-spacing:0.1em';
       }
 

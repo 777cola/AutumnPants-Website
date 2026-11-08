@@ -90,7 +90,7 @@
     var SHARED_I18N = {
       zh: { 'coming.status': '还没做好', 'coming.desc': '这个页面还在施工中<br>内容会放在这里', 'coming.back': '回到首页', 'foot.friend': '想看我做的项目？' },
       en: { 'coming.status': 'Not quite ready', 'coming.desc': 'Still putting this one together<br>Content lands here soon', 'coming.back': 'Back to Home', 'foot.friend': "Want to see what I've built?" },
-      hant: { 'coming.status': '仲未整好', 'coming.desc': '呢頁仲喺度整緊<br>內容遲啲先至有', 'coming.back': '返去首頁', 'foot.friend': '想睇我做嘅項目？' }
+      hant: { 'coming.status': '還沒做好', 'coming.desc': '這個頁面還在整理中<br>內容會放在這裡', 'coming.back': '回到首頁', 'foot.friend': '想看看我做過的項目？' }
     };
 
     function renderPageI18N(lang) {

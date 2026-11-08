@@ -25,9 +25,9 @@ const I18N = {
   hant: {
     'nav.home':'音樂首頁','nav.listen':'聽','nav.concert':'賞','nav.perform':'演','nav.create':'創',
     'hero.badge':'AUTUMN PANTS',
-    'hero.sub':'聚光燈下，咪前——每一場都靠近自己多一啲',
-    'gallery.title':'演出檔案','gallery.desc':'撳入卡片睇詳情',
-    'footer.text':'下一場，嚟緊','footer.meta':'AUTUMN PANTS · 2026',
+    'hero.sub':'聚光燈下，話筒前——每一場演出都在靠近自己',
+    'gallery.title':'演出檔案','gallery.desc':'點擊卡片查看詳情',
+    'footer.text':'下一場演出，正在路上','footer.meta':'AUTUMN PANTS · 2026',
     'section.setlist':'曲目','section.photos':'影像',
     'credit':'舞台時光 · AutumnPants',
   }
@@ -172,6 +172,7 @@ function App() {
 
   // Get localized version of a performance
   const perfText = useCallback((p, field) => {
+    if (field === 'title') return p[`title${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || p.title;
     if (field === 'subtitle') return p[`subtitle${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || p.subtitle;
     if (field === 'description') return p[`description${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || p.description;
     if (field === 'title') return p[`title${lang.charAt(0).toUpperCase() + lang.slice(1)}`] || p.title;
@@ -180,8 +181,8 @@ function App() {
     return p[field];
   }, [lang]);
 
-  const heroChars = lang === 'zh' || lang === 'hant'
-    ? ['舞','台','时','光']
+  const heroChars = lang === 'hant' ? ['舞','台','時','光']
+    : lang === 'zh' ? ['舞','台','时','光']
     : ['S','T','A','G','E'];
 
   return (
@@ -246,7 +247,7 @@ function App() {
                 <div className="card-overlay" />
                 <div className="card-info">
                   <span className="card-date">{p.date}</span>
-                  <span className="card-name">{p.title}</span>
+                  <span className="card-name">{perfText(p, 'title')}</span>
                   <span className="card-tags">{perfText(p, 'tags').join(' · ')}</span>
                 </div>
               </div>

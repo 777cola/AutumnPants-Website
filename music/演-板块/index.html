@@ -11,5 +11,22 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-  </body>
+    <script>
+  /* sync cross-subdomain prefs (cookie .qijunhao.com) into localStorage for React app */
+  (function () {
+    function readCookie(k) {
+      try {
+        var m = document.cookie.match(new RegExp('(?:^|; )' + k + '=([^;]*)'));
+        return m ? decodeURIComponent(m[1]) : null;
+      } catch (e) { return null; }
+    }
+    try {
+      var lang = localStorage.getItem('lang') || readCookie('lang');
+      if (lang) localStorage.setItem('lang', lang);
+      var theme = localStorage.getItem('theme') || readCookie('theme');
+      if (theme) { localStorage.setItem('theme', theme); document.documentElement.setAttribute('data-theme', theme); }
+    } catch (e) {}
+  })();
+  </script>
+</body>
 </html>

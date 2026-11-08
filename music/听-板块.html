@@ -190,7 +190,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-he
         </div>
         <h1 data-i18n="hero.title">我的<span class="highlight">音乐</span>宇宙</h1>
         <p class="hero-sub" data-i18n="hero.sub">从 2019 到 2026，每一首歌都是一段记忆</p>
-        <p class="hero-date-range">数据来源时间范围为 2019/11/17 — 2026/07/26</p>
+        <p class="hero-date-range" data-i18n="hero.dateRange">数据来源时间范围为 2019/11/17 — 2026/07/26</p>
         <div class="hero-stats">
           <div class="hero-stat-card">
             <span class="stat-icon">♪</span>
@@ -373,7 +373,7 @@ const I18N = {
     "nav.photo":"摄影","nav.sports":"运动","nav.resume":"履历","nav.contact":"联系",
     "nav.listen":"听","nav.concert":"赏","nav.perform":"演","nav.create":"创",
     "hero.badge":"音乐档案","hero.title":"我的<span class=\"highlight\">音乐</span>宇宙",
-    "hero.sub":"从 2019 到 2026，每一首歌都是一段记忆",
+    "hero.sub":"从 2019 到 2026，每一首歌都是一段记忆","hero.dateRange":"数据来源时间范围为 2019/11/17 — 2026/07/26",
     "hero.statSongs":"已添加到资料库歌曲","hero.statArtists":"歌手","unknown":"未知",
     "hero.statMostPlayed":"最高播放","hero.statTopArtist":"最多歌曲",
     "artists.title":"艺人星系","artists.desc":"播放列表中出镜率最高的 20 位歌手",
@@ -381,8 +381,8 @@ const I18N = {
     "yearTrend.title":"年度趋势","yearTrend.desc":"每一年的音乐记忆",
     "treasures.title":"五星珍藏","treasures.desc":"获评 ★★★★★ 且反复聆听的经典之作",
     
-    "recent.title":"本月最爱","recent.desc":"今個月聽得最多嘅歌","recent.playsUnit":" 次 · ",
-    "shuffle.title":"🎲 随机一碟","shuffle.desc":"从 3355 首歌里随机抽出 3 首","shuffle.btn":"摇一摇","random.plays":" 次播放","random.source":"評分、播放次數、加入日期，全部係我自己嘅",
+    "recent.title":"本月最爱","recent.desc":"这个月听得最多的歌","recent.playsUnit":" 次 · ",
+    "shuffle.title":"🎲 随机一碟","shuffle.desc":"从 3355 首歌里随机抽出 3 首","shuffle.btn":"摇一摇","random.plays":" 次播放","random.source":"评分、播放次数、加入日期，全部是我自己的",
     "footer.home":"🏠 返回音乐首页",
     "footer.note":"数据来源于 Apple Music 智能播放列表 · 共 3355 首歌曲 · 最后更新 2026/07/26",
     "treasure.rating":"五星","treasure.plays":"次播放","treasure.liked":"喜爱",
@@ -393,7 +393,7 @@ const I18N = {
     "nav.photo":"Photography","nav.sports":"Sports","nav.resume":"Resume","nav.contact":"Contact",
     "nav.listen":"Listen","nav.concert":"Live","nav.perform":"Stage","nav.create":"Create",
     "hero.badge":"Music Profile","hero.title":"My <span class=\"highlight\">Music</span> Universe",
-    "hero.sub":"2019 to 2026 — every song is a memory",
+    "hero.sub":"2019 to 2026 — every song is a memory","hero.dateRange":"Data spans 2019/11/17 — 2026/07/26",
     "hero.statSongs":"Songs Collected","hero.statArtists":"Artists","unknown":"Unknown",
     "hero.statMostPlayed":"Most Played","hero.statTopArtist":"Top Artist",
     "artists.title":"Artist Galaxy","artists.desc":"The 20 artists I play most",
@@ -417,26 +417,23 @@ const I18N = {
     "nav.photo":"攝影","nav.sports":"運動","nav.resume":"履歷","nav.contact":"聯絡",
     "nav.listen":"聽","nav.concert":"賞","nav.perform":"演","nav.create":"創",
     "hero.badge":"音樂檔案","hero.title":"我的<span class=\"highlight\">音樂</span>宇宙",
-    "hero.sub":"由 2019 到 2026，每一首歌都係一段記憶",
+    "hero.sub":"由 2019 到 2026，每一首歌都是一段記憶","hero.dateRange":"資料來源時間範圍為 2019/11/17 — 2026/07/26",
     "hero.statSongs":"已新增至資料庫","hero.statArtists":"歌手","unknown":"未知",
     "hero.statMostPlayed":"最高播放","hero.statTopArtist":"最多歌曲",
-    "artists.title":"藝人星系","artists.desc":"我聽得最多嘅 20 位歌手",
-    "treasures.title":"五星珍藏","rating.title":"評分分佈","rating.desc":"我俾每首歌嘅評分","rating.labels":["無評分","★","★★","★★★","★★★★","★★★★★"],
-    "yearTrend.title":"年度趨勢","yearTrend.desc":"每一年聽落係咩聲",
-    "treasures.title":"五星珍藏","treasures.desc":"五星，翻聽再翻聽",
+    "artists.title":"藝人星系","artists.desc":"我聽得最多的 20 位歌手",
+    "treasures.title":"五星珍藏","rating.title":"評分分佈","rating.desc":"我為每首歌打的評分","rating.labels":["無評分","★","★★","★★★","★★★★","★★★★★"],
+    "yearTrend.title":"年度趨勢","yearTrend.desc":"每一年的音樂記憶",
+    "treasures.title":"五星珍藏","treasures.desc":"獲評 ★★★★★ 且反覆聆聽的經典之作",
     
     "recent.title":"本月最愛","recent.desc":"本月添加、播放量最高的歌曲",
-    "shuffle.title":"🎲 隨機一碟","shuffle.desc":"喺 3355 首入面隨機抽 3 首","shuffle.btn":"搖一搖",
+    "shuffle.title":"🎲 隨機一碟","shuffle.desc":"在 3355 首裡隨機抽 3 首","shuffle.btn":"搖一搖",
     "footer.home":"🏠 返回音樂首頁",
     "footer.note":"資料來自 Apple Music 智能播放列表 · 共 3355 首 · 最後更新 2026/07/26",
     "treasure.rating":"五星","treasure.plays":"次播放","treasure.liked":"喜愛",
     "artist.songs":"首",
     "treasure.playsUnit":"次",
     "year.title":"共新增 ","year.songsUnit":" 首歌","year.gold":"年度金曲","year.plays":" 次",
-    "random.plays":" 次播放","random.source":"評分、播放次數、加入日期，全部係我自己嘅",
-    "recent.playsUnit":" 次 · ",
-    "year.title":"共新增 ","year.songsUnit":" 首歌","year.gold":"年度金曲","year.plays":" 次",
-    "random.plays":" 次播放","random.source":"評分、播放次數、加入日期，全部係我自己嘅",
+    "random.plays":" 次播放","random.source":"評分、播放次數、加入日期，全部是我自己的",
     "recent.playsUnit":" 次 · ",
   }
 };
@@ -590,6 +587,7 @@ function applyLang(lang){
   buildTreasures();
   renderYearGrid();
   buildRecent();
+  renderRatingStacked();
   // Update random source text
   document.querySelectorAll('.random-source').forEach(el => {
     if(I18N[lang] && I18N[lang]['random.source']) el.textContent = I18N[lang]['random.source'];
