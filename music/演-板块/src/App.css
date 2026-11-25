@@ -77,37 +77,33 @@ body {
 }
 .lang-toggle {
   position: relative; display: inline-flex; align-items: center; justify-content: center;
-  width: 176px; height: 36px;
+  width: 176px; height: 38px;
   background: var(--card-bg); border: 1px solid var(--card-border);
   border-radius: 14px; padding: 3px; gap: 2px;
   transition: border-color var(--transition);
 }
 .lang-toggle:hover { border-color: var(--accent-border); }
 .lang-item {
-  display: inline-flex; align-items: center; height: 28px; padding: 0 9px;
+  display: inline-flex; align-items: center; height: 30px; padding: 0 9px;
   font-size: .8rem; font-weight: 400; letter-spacing: .04em; border-radius: 10px;
   cursor: pointer; color: var(--text-muted); white-space: nowrap; user-select: none;
   font-family: var(--font-body);
   transition: color .35s, background .35s;
 }
-.lang-item::after {
-  display: inline-block; width: 0; overflow: hidden; white-space: nowrap;
-  padding-left: 0; opacity: 0;
-  transition: width .45s cubic-bezier(.22,1,.36,1), opacity .25s .12s, padding-left .45s cubic-bezier(.22,1,.36,1);
+.lang-item .full {
+  display: grid; grid-template-columns: 0fr; padding-left: 0;
+  transition: grid-template-columns .45s cubic-bezier(.22,1,.36,1),
+              padding-left .45s cubic-bezier(.22,1,.36,1);
 }
-.lang-item[data-lang="zh"] { order: 1; }
-.lang-item[data-lang="hant"] { order: 2; }
-.lang-item[data-lang="en"] { order: 3; }
-.lang-item[data-lang="zh"]::after { content: "简体中文"; }
-.lang-item[data-lang="hant"]::after { content: "繁體中文"; }
-.lang-item[data-lang="en"]::after { content: "English"; }
+.lang-item .full > span {
+  overflow: hidden; white-space: nowrap; opacity: 0;
+  transition: opacity .25s .12s;
+}
 .lang-item.active {
-  background: var(--accent-subtle); color: var(--text); padding: 0 11px;
+  background: var(--accent-subtle); color: var(--text); padding: 0 10px;
 }
-.lang-item.active::after { opacity: 1; padding-left: 5px; }
-.lang-item[data-lang="zh"].active::after { width: 53.4px; }
-.lang-item[data-lang="hant"].active::after { width: 53.4px; }
-.lang-item[data-lang="en"].active::after { width: 47.2px; }
+.lang-item.active .full { grid-template-columns: 1fr; padding-left: 5px; }
+.lang-item.active .full > span { opacity: 1; }
 .lang-item:hover:not(.active) { color: var(--text-secondary); background: var(--accent-subtle); }
 .theme-toggle {
   background: none; border: none; cursor: pointer;

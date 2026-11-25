@@ -689,6 +689,7 @@ const langToggleIIFE = (function(){
   function apply(lang) {
     window._currentLang = lang;
     items.forEach(el => el.classList.toggle('active', el.dataset.lang === lang));
+    document.documentElement.lang = lang === 'en' ? 'en' : (lang === 'hant' ? 'zh-Hant' : 'zh-CN');
     document.querySelectorAll('[data-lang-text]').forEach(el => {
       const key = el.getAttribute('data-lang-text');
       if (LANG_DATA[lang] && LANG_DATA[lang][key]) el.innerHTML = LANG_DATA[lang][key];

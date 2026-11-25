@@ -718,6 +718,7 @@ let currentLang = 'zh';
 function applyLang(lang){
   currentLang = lang;
   Prefs.set('lang', lang);
+  document.documentElement.lang = lang === 'en' ? 'en' : (lang === 'hant' ? 'zh-Hant' : 'zh-CN');
   document.querySelectorAll('.lang-item').forEach(el => el.classList.toggle('active', el.dataset.lang === lang));
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;

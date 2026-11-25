@@ -460,7 +460,7 @@ function buildArtistGalaxy(){
     return `<div class="${cls}">
       <div class="artist-rank">#${i+1}</div>
       <div class="artist-name">${name}</div>
-      <div class="artist-count">${a.count} <span data-i18n="artist.songs">首</span></div>
+      <div class="artist-count">${a.count} <span>${(I18N[currentLang]||I18N.zh)['artist.songs']||'首'}</span></div>
     </div>`;
   }).join('');
 }
@@ -577,6 +577,8 @@ function observeSections(){
 let currentLang = 'zh';
 function applyLang(lang){
   currentLang = lang;
+  Prefs.set('lang', lang);
+  document.documentElement.lang = lang === 'en' ? 'en' : (lang === 'hant' ? 'zh-Hant' : 'zh-CN');
   document.querySelectorAll('.lang-item').forEach(el => el.classList.toggle('active', el.dataset.lang === lang));
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;

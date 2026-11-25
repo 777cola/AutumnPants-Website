@@ -588,8 +588,47 @@ const concerts=[
 ];
 
 /* ═══════════════════════════════════════════════════════
-   BUILD DOM
+   I18N — 艺人 / 巡演 / 场馆 / 备注（歌曲名与歌词保留原语言）
    ═══════════════════════════════════════════════════════ */
+const I18N_DATA={
+  artist:{
+    '陶喆':{hant:'陶喆',en:'David Tao'},
+    '陈奕迅':{hant:'陳奕迅',en:'Eason Chan'},
+    '五月天':{hant:'五月天',en:'Mayday'},
+    '海山日月音乐节':{hant:'海山日月音樂節',en:'Haishan Riyue Festival'},
+    '薛之谦':{hant:'薛之謙',en:'Joker Xue'},
+    '邓紫棋':{hant:'鄧紫棋',en:'G.E.M.'},
+    '汪峰':{hant:'汪峰',en:'Wang Feng'}
+  },
+  tour:{
+    'Soul Power II':{hant:'Soul Power II',en:'Soul Power II'},
+    'FEAR AND DREAMS':{hant:'FEAR AND DREAMS',en:'FEAR AND DREAMS'},
+    '回到那一天':{hant:'回到那一天',en:'Back to That Day'},
+    '海山日月':{hant:'海山日月',en:'Haishan Riyue'},
+    '天外来物':{hant:'天外來物',en:'Extraterrestrial'},
+    'I AM GLORIA':{hant:'I AM GLORIA',en:'I AM GLORIA'},
+    '好好好想见到你':{hant:'好好好想見到你',en:'Miss You So Much'},
+    '2015 巡演':{hant:'2015 巡演',en:'2015 Tour'}
+  },
+  venue:{
+    '上海 · 虹口足球场':{hant:'上海 · 虹口足球場',en:'Shanghai · Hongkou Football Stadium'},
+    '澳门 · 银河综艺馆':{hant:'澳門 · 銀河綜藝館',en:'Macau · Galaxy Arena'},
+    '上海 · 上海体育场':{hant:'上海 · 上海體育場',en:'Shanghai · Shanghai Stadium'},
+    '深圳 · 国际会展中心':{hant:'深圳 · 國際會展中心',en:'Shenzhen · Shenzhen World Exhibition & Convention Center'},
+    '深圳 · 深圳大运中心':{hant:'深圳 · 深圳大運中心',en:'Shenzhen · Shenzhen Universiade Center'},
+    '厦门 · 厦门奥体中心':{hant:'廈門 · 廈門奧體中心',en:'Xiamen · Xiamen Olympic Sports Center'},
+    '上海 · 梅赛德斯奔驰文化中心':{hant:'上海 · 梅賽德斯奔馳文化中心',en:'Shanghai · Mercedes-Benz Arena'},
+    '深圳 · 华润深圳湾体育中心':{hant:'深圳 · 華潤深圳灣體育中心',en:'Shenzhen · China Resources Shenzhen Bay Sports Center'}
+  },
+  note:{
+    '最终站':{hant:'最終站',en:'Final stop'}
+  }
+};
+function trData(kind,key,lang){
+  if(!key||lang==='zh') return key;
+  const v=I18N_DATA[kind]&&I18N_DATA[kind][key];
+  return v&&v[lang]?v[lang]:key;
+}
 const app=document.getElementById('app');
 const nav=document.getElementById('nav');
 const uniqueArtists=[...new Set(concerts.map(c=>c.artist))];
@@ -621,6 +660,7 @@ concerts.forEach(c=>{
   const dot=document.createElement('button');
   dot.className='t-dot';
   dot.setAttribute('data-artist',c.artist);
+  dot.setAttribute('data-artist-key',c.artist);
   dot.addEventListener('click',()=>{
     document.querySelectorAll('.concert')[concerts.indexOf(c)].scrollIntoView({behavior:'smooth'});
   });
@@ -644,9 +684,9 @@ concerts.forEach((c,i)=>{
     ${hasVideo?`<video class="vid-bg" muted loop playsinline></video>`:''}
     <div class="inner">
       <div class="number" data-anim>${String(i+1).padStart(2,'0')} / ${concerts.length}</div>
-      <h2 class="artist" data-anim><span>${c.artist}</span></h2>
+      <h2 class="artist" data-anim><span class="concert-artist">${c.artist}</span></h2>
       <div class="tour-name" data-anim>${c.tour}</div>
-      <div class="location" data-anim>${c.venue}${c.note?` <span class="tag">${c.note}</span>`:''}</div>
+      <div class="location" data-anim><span class="loc-venue">${c.venue}</span>${c.note?` <span class="tag">${c.note}</span>`:''}</div>
       <div class="lyric-block" data-anim>
         <div class="text">「${c.lyric.text}」</div>
         <div class="song">— ${c.lyric.song}</div>
@@ -776,6 +816,7 @@ allScreens.forEach((s,i)=>{
     textSpan.textContent = '档案'; // I18N loaded later, default zh
   } else {
     textSpan.textContent = label;
+    textSpan.dataset.artist = label;
   }
   labelSpan.appendChild(idxSpan);
   labelSpan.appendChild(textSpan);
@@ -1111,6 +1152,7 @@ let currentLang = 'zh';
 function applyLang(lang){
   currentLang = lang;
   Prefs.set('lang', lang);
+  document.documentElement.lang = lang === 'en' ? 'en' : (lang === 'hant' ? 'zh-Hant' : 'zh-CN');
   document.querySelectorAll('.lang-item').forEach(el => el.classList.toggle('active', el.dataset.lang === lang));
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
@@ -1119,6 +1161,7 @@ function applyLang(lang){
   // Rebuild dynamic content
   updateHeroText(lang);
   updateSidebarLabels(lang);
+  updateConcertTexts(lang);
   updateBgmTip(lang);
   updateConsoleLog(lang);
 }
@@ -1150,7 +1193,26 @@ function updateSidebarLabels(lang){
   document.querySelectorAll('.sp-item .sp-label .sp-label-text').forEach(el => {
     if(el.dataset.i18n && I18N[lang] && I18N[lang][el.dataset.i18n]){
       el.textContent = I18N[lang][el.dataset.i18n];
+    } else if(el.dataset.artist){
+      el.textContent = trData('artist', el.dataset.artist, lang);
     }
+  });
+}
+function updateConcertTexts(lang){
+  document.querySelectorAll('.concert').forEach((sec,i)=>{
+    const c = concerts[i];
+    if(!c) return;
+    const a = sec.querySelector('.concert-artist');
+    if(a) a.textContent = trData('artist', c.artist, lang);
+    const t = sec.querySelector('.tour-name');
+    if(t) t.textContent = trData('tour', c.tour, lang);
+    const v = sec.querySelector('.loc-venue');
+    if(v) v.textContent = trData('venue', c.venue, lang);
+    const n = sec.querySelector('.location .tag');
+    if(n && c.note) n.textContent = trData('note', c.note, lang);
+  });
+  document.querySelectorAll('.t-dot[data-artist-key]').forEach(el=>{
+    el.setAttribute('data-artist', trData('artist', el.dataset.artistKey, lang));
   });
 }
 function updateBgmTip(lang){
