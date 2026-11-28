@@ -387,6 +387,22 @@ img { max-width: 100%; height: auto; display: block; }
   .nav-links.active { display: flex; }
 }
 
+/* 手机端导航：gooey-nav.js 会把 #navGooey 的 class 换成 `gooey-nav-container`，
+   原来针对 `.nav-gooey` 的 display:none 永远匹配不到，7 个菜单项在 768px 以下
+   被挤成竖排、语言胶囊溢出屏幕。这里改成横向可滑动，保留入口能力。 */
+@media (max-width: 768px) {
+  .nav-inner { gap: .5rem; padding: 0 1rem; }
+  .nav-inner .gooey-nav-container {
+    flex: 1 1 auto; min-width: 0; justify-content: flex-start;
+    overflow-x: auto; overflow-y: hidden;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .nav-inner .gooey-nav-container::-webkit-scrollbar { display: none; }
+  .nav-inner .gooey-nav-container nav ul { flex-wrap: nowrap; }
+  .nav-inner .gooey-nav-container nav ul li a { white-space: nowrap; }
+  .nav-inner .gooey-nav-container .nav-sub { display: none; }
+}
+
 /* ============================================================
    GOOEY NAV (navbar integration)
    ============================================================ */
