@@ -191,7 +191,7 @@ function App() {
       <nav className="topnav">
         <div className="nav-wrap">
           <div className="nav-center">
-            <a href="../../音乐首页.html" className="home" data-i18n="nav.home">音乐首页</a>
+            <a href="../../" className="home" data-i18n="nav.home">音乐首页</a>
             <div className="links" id="navLinks">
               <span className="nav-pill" id="navPill"></span>
               <a href="../../听-板块.html" data-i18n="nav.listen">听</a>
