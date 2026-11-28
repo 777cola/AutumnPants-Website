@@ -642,6 +642,11 @@ img { max-width: 100%; height: auto; display: block; }
   transition: opacity 0.25s 0.12s;
 }
 
+.lang-item:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
 .lang-item.active {
   color: var(--text);
   background: var(--accent-glow);

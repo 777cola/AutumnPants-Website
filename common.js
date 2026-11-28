@@ -137,6 +137,18 @@
           applyLang(item.dataset.lang);
         }
       });
+      // 键盘可达：span 不是原生控件，补 role/tabindex 并支持 Enter / Space
+      langToggle.querySelectorAll('.lang-item').forEach(function(el) {
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
+        if (el.dataset.full) el.setAttribute('aria-label', el.dataset.full);
+        el.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();
+            applyLang(el.dataset.lang);
+          }
+        });
+      });
     }
 
     // ─── Mobile Nav Toggle ───────────────────────────
